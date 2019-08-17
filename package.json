@@ -4,8 +4,9 @@
   "description": "Personal website for Theater Director and Dramaturge Rem Van Aiken Myers",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "dev": "NODE_ENV=development nodemon server.js",
+    "server": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "@amzick",
   "license": "ISC",
