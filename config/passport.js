@@ -1,7 +1,14 @@
-const { Strategy, ExtractJwt } = require('passport-jwt');
+// const { Strategy, ExtractJwt } = require('passport-jwt');
+const JwtStrategy = require('passport-jwt').Strategy
+const ExtractJwt = require('passport-jwt').ExtractJwt
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 const keys = require('../config/keys');
+
+/* 
+passport: https://www.npmjs.com/package/passport
+http://www.passportjs.org/packages/passport-jwt/?source=post_page-----c405048e3669----------------------
+*/
 
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -10,7 +17,7 @@ const options = {
 
 module.exports = function (passport) {
   passport.use(
-    new Strategy(options, (jwtPayload, done) => {
+    new JwtStrategy(options, (jwtPayload, done) => {
       User.findById(jwtPayload.id)
         .then(user => {
           if (user) {

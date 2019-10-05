@@ -11,7 +11,12 @@ const validateLoginInput = require('../../validation/login');
 // Load User Model
 const User = require('../../models/User');
 
-function createNewUser ({ username, password }) {
+/* why I don't like this:
+the tutorial didn't have the creation of the user extracted to its own function
+I tried to do this but since .save() is returning a promise I have to handle it
+within the createNewUser function, and I feel like the createNewUser function should be doing one thing
+*/
+function createNewUser ({ username, password }, res) {  //this sucks
   const newUser = new User({ username, password });
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(password, salt, (err, hash) => {
@@ -43,7 +48,7 @@ router.post('/signup', (req, res) => {
       if (user) {
         return res.status(400).json({ username: "Username already exists" })
       } else {
-        createNewUser(req.body);
+        createNewUser(req.body, res);
       }
     })
 })
@@ -89,5 +94,29 @@ router.post('/login', (req, res) => {
     })
   })
 })
+
+// router.delete('/delete', (req, res) => {
+//   const { username, password } = req.body;
+
+//   // find by username
+//   User.findOne({ username })
+//     .then(user => {
+//       // confirm user
+//       if (!user) {
+//         return res.status(404).json({ username: "Username not found"});
+//       }
+
+//       // check pass word
+//       bcrypt.compare(password, user.password).then(isMatch => {
+//         if (isMatch) {
+//           User.remove(user)
+//             .then(query => res.json(query))
+//             .catch(err => console.log(err))
+//         } else {
+//           return res.status(400).json({ password: "Password incorrect" })
+//         }
+//       })
+//     })
+// })
 
 module.exports = router;
