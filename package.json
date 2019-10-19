@@ -4,7 +4,9 @@
   "description": "Personal website for Theater Director and Dramaturge Rem Van Aiken Myers",
   "main": "server.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon server.js",
+    "client": "npm start --prefix client",
+    "client-install": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server.js",
     "start": "node server.js"
   },
