@@ -50,10 +50,14 @@ class Login extends Component {
       setAuthToken(token);
 
       // decode token to get data
-      const decoded = jwt_decode(token);
+      const { username: user } = jwt_decode(token);
+      localStorage.setItem('user', user);
+
+      // clear errors
       this.setState({
-        errors: {}
+        errors: {},
       });
+      window.location.href='/edit';
     })
     .catch(err => {
       const errors = get(err, 'response.data');
