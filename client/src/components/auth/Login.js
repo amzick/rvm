@@ -53,6 +53,8 @@ class Login extends Component {
       const { username: user } = jwt_decode(token);
       localStorage.setItem('user', user);
 
+      // store cookie, then save User, then redirect
+
       // clear errors
       this.setState({
         errors: {},
@@ -60,9 +62,10 @@ class Login extends Component {
       window.location.href='/edit';
     })
     .catch(err => {
-      const errors = get(err, 'response.data');
+      let errors = get(err, 'response.data');
       if (!errors) {
         console.log("Error:", err);
+        errors = {};
       }
       this.setState({
         errors

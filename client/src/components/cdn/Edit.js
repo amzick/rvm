@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 
+import Cookies from 'js-cookie';
+
 class Edit extends Component {
   constructor() {
     super();
@@ -10,6 +12,7 @@ class Edit extends Component {
     ele.preventDefault();
 
     localStorage.clear();
+    Cookies.remove('session');
     window.location.href='/';
   }
 

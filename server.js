@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
 const users = require('./routes/api/users');
@@ -15,6 +16,9 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
+// cookie-parser for server side auth
+app.use(cookieParser());
 
 // initialize app configuration
 // const config = new Config();
