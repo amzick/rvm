@@ -7,6 +7,10 @@ function checkImageUrl(url) {
   return ((url.match(/\.(jpeg|jpg|gif|png)$/) != null));
 }
 
+function checkVideoUrl(url) {
+  return ((url.match(/(youtube|vimeo)/) != null));
+}
+
 // this modifies body to make sure type is an object because i'm lazy
 module.exports = function validatePlayInput(body) {
   const errors = {};
@@ -17,6 +21,7 @@ module.exports = function validatePlayInput(body) {
     date = undefined,
     about = '',
     images = [],
+    videos = [],
     types = {},
     press = []
   } = body;
@@ -35,6 +40,10 @@ module.exports = function validatePlayInput(body) {
 
   if (!images.every(checkImageUrl)) {
     errors.images = 'At least one of your image urls is not a valid file type. Must be jpeg, jpg, gif or png';
+  }
+
+  if (!videos.every(checkVideoUrl)) {
+    errors.videos = 'Videos must be from Youtube or Vimeo';
   }
 
   press.forEach(review => {

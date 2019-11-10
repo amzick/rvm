@@ -5,6 +5,7 @@
   - show date (will determine year which is part of url)
   - about (rem enters whatever)
   - images (array of private imgur links)
+  - videos (array of youtube or vimeo links)
   - type: plays / youth / dramaturg
   - press (reviews): array of objects with links with optional quote
 
@@ -40,6 +41,7 @@ const PlaySchema = new Schema({
     type: [String],
     require: true
   },
+  videos: [String],
   types: {
     isPlay: {
       type: Boolean,
