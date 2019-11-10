@@ -7,28 +7,30 @@ function checkImageUrl(url) {
   return ((url.match(/\.(jpeg|jpg|gif|png)$/) != null));
 }
 
-module.exports = function validatePlayInput({
-  title = '',
-  playwright = '',
-  location = '',
-  date = undefined,
-  about = '',
-  images = [],
-  types = {},
-  press = []
-}) {
+// this modifies body to make sure type is an object because i'm lazy
+module.exports = function validatePlayInput(body) {
   const errors = {};
+  const {
+    title = '',
+    playwright = '',
+    location = '',
+    date = undefined,
+    about = '',
+    images = [],
+    types = {},
+    press = []
+  } = body;
 
-  [title, playwright, location, date, about, types].forEach(field => {
-    if (isEmpty(field)) {
-      errors[field] = (field === 'images')
+  ['title', 'playwright', 'location', 'date', 'about', 'images', 'types'].forEach(field => {
+    if (isEmpty(body[field])) {
+      errors[field] = (field !== 'images')
         ? `${field} is required`
         : 'at least one image is required'
     }
   });
 
-  if (!(date instanceof Date)) {
-    errors.date = 'Date must be a js date type'
+  if (!(Date.parse(date))) {
+    errors.date = 'Please enter a valid date';
   }
 
   if (!images.every(checkImageUrl)) {
@@ -38,8 +40,8 @@ module.exports = function validatePlayInput({
   press.forEach(review => {
     if (isEmpty(review.publication)) {
       errors.press = 'You need to enter at least a reviewer or publication name'
-    } else if (isEmpty(review.url) || isEmpty(review.quote)) {
-      errors.press = 'To enter a review you need either a quotation or a link to the review along with the publication name'
+    } else if (isEmpty(review.url) && isEmpty(review.quote)) {
+      errors.press = `To enter a review you need either a quotation or a link to the review along with the publication name for ${review.publication}`
     }
   });
 

@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
 const users = require('./routes/api/users');
+const plays = require('./routes/api/plays');
 // const Config = require('./config');
 
 const app = express();
@@ -39,6 +40,7 @@ require('./config/passport')(passport);
 
 // Routes
 app.use('/api/users', users);
+app.use('/api/plays', plays);
 
 const port = process.env.PORT || 5000;
 

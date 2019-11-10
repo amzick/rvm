@@ -39,16 +39,17 @@ function createNewUser ({ username, password }, res) {  //this sucks
 // @desc Sign Up user
 // @access Public
 router.post('/signup', (req, res) => {
-  const { errors, isValid } = validateSignUpInput(req.body);
-  // check validation
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
   // I don't want anyone to be able to create an account
   // didn't like returning the res out of the helper function for some reason ?
   const { sessionToken } = req.cookies;
   if (!isAuthorized(sessionToken)) {
     return res.status(401).send('Forbidden');
+  }
+
+  const { errors, isValid } = validateSignUpInput(req.body);
+  // check validation
+  if (!isValid) {
+    return res.status(400).json(errors);
   }
 
   const { username } = req.body;
