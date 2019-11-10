@@ -58,6 +58,10 @@ const PlaySchema = new Schema({
     }
   },
   press: [{
+    publication: {
+      type: String,
+      required: true
+    },
     url: String,
     quote: String
   }]
