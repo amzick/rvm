@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
+    "http-proxy-middleware": "^0.20.0",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "react": "^16.10.2",
@@ -18,7 +19,6 @@
     "start": "react-scripts start",
     "test": "react-scripts test"
   },
-  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
   },

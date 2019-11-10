@@ -7,6 +7,12 @@ const isAuthorized = require('../../validation/isAuthorized');
 
 const Play = require('../../models/Play');
 
+router.get('/', (req, res) => {
+  Play.find({}, function(_, plays) {
+    res.json({ plays });
+  })
+})
+
 router.post('/', (req, res) => {
   // const { sessionToken } = req.cookies;
   // if (!isAuthorized(sessionToken)) {
