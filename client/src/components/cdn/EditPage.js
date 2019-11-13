@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 // import { Link } from 'react-router-dom';
 
-import Cookies from 'js-cookie';
+import EditForm from './EditForm';
 
 class EditPage extends Component {
   constructor(props) {
@@ -40,15 +41,15 @@ class EditPage extends Component {
 
   render() {
     const { loading } = this.state;
-    const errors = this.state.errors.map(err => <div>Error: {err}</div>)
-    const plays = this.state.plays.map(play => <div>{play.title}</div>)
+    const errors = this.state.errors.map(err => <div>Error: {err}</div>);
+    const plays = this.state.plays.map(play => <EditForm key={play._id} play={play} />);
 
     return (
       <div className='edit-page'>
-        <button type='button' onClick={this.handleLogout}>Logout</button>
         <p>Edit Page</p>
-        {loading ? <div>Loading....</div> : plays}
+        <button type='button' onClick={this.handleLogout}>Logout</button>
         {(errors.length > 0) && errors}
+        {loading ? <div>Loading....</div> : plays}
       </div>
     )
   }

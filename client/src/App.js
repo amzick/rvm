@@ -13,7 +13,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
         <Route exact path="/" component={Landing} />
         <AuthRoute exact path="/login" component={Login} />
         <ProtectedRoute exact path="/edit" component={EditPage} />
