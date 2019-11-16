@@ -9,12 +9,103 @@ class EditForm extends Component {
     this.initialFormData._id = this.initialFormData._id || 'new';
     this.state = {
       formData: merge({}, this.initialFormData),
-      changesDetected: false
+      changesDetected: false,
+      newImage: '',
+      newVideo: '',
     };
   }
 
   aboutPlaceholder = () => {
     return 'This is where you would enter more information about the play.Will be rendered as HTML so you can use < br /> line breaks, etc.Cast and crew info should go here.Anything else you want';
+  }
+
+  arrayMapper = (arr, field, _id) => {
+    const fieldSingular = field.substring(0, field.length - 1);
+
+    const stateKeys = {
+      images: 'newImage',
+      videos: 'newVideo'
+    };
+    const onChangeFunctions = {
+      images: this.handleNewImageUpdate,
+      videos: this.handleNewVideoUpdate,
+    }
+
+    return (
+      <ul>Play {`${field}`}{field === 'images' && ' (At least one required)'}:
+        {arr.map((ele, idx) => {
+        return (
+          <li key={`${field}-${idx}_${_id}`}>
+            <label htmlFor={`${field}-${idx}_${_id}`}>{`${fieldSingular} ${idx + 1}`}{idx === 0 && ' (primary)'} :</label>
+            <input
+              id={`${field}-${idx}_${_id}`}
+              type="text"
+              value={ele}
+              onChange={event => this.handleArrayUpdate(event, 'update', `${field}`, idx)}
+            />
+            {/* move down */}
+            {idx < (arr.length - 1) && <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveDown', `${field}`, idx)}>&#8595;</button>}
+            {/* move up */}
+            {idx > 0 && <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveUp', `${field}`, idx)}>&#8593;</button>}
+            <button type="button" onClick={event => this.handleArrayUpdate(event, 'remove', `${field}`, idx)}>Remove</button>
+          </li>
+        );
+      })}
+        <li key={`image-new_${_id}`}>
+          <label htmlFor={`image-new_${_id}`}>Add {`${fieldSingular}`}: </label>
+          <input
+            id={`image-new_${_id}`}
+            type="text"
+            placeholder={`Add ${fieldSingular} urls here`}
+            value={this.state[stateKeys[field]]}
+            onChange={onChangeFunctions[field]}
+          />
+          <button type="button" onClick={event => this.handleArrayUpdate(event, 'add', field)}>Add</button>
+        </li>
+      </ul>
+    )
+  }
+
+  handleArrayUpdate = (event, type, field, idx) => {
+    event.preventDefault();
+
+    const stateString = {
+      images: 'newImage',
+      videos: 'newVideo'
+    }[field];
+
+
+    const swapElements = (arr, i, i2) => {
+      [arr[i], arr[i2]] = [arr[i2], arr[i]];
+    }
+  
+    const { formData } = this.state;
+    switch(true) {
+      case(type === 'update'):
+        formData[field][idx] = event.target.value;
+        break;
+      case(type === 'remove'):
+        formData[field].splice(idx, 1);
+        break;
+      case(type === 'add'):
+        formData[field].push(this.state[stateString]);
+        break;
+      case(type === 'moveDown'):
+        swapElements(formData[field], idx, idx + 1);
+        break;
+      case(type === 'moveUp'):
+        swapElements(formData[field], idx, idx - 1);
+        break;
+      default:
+        break;
+    };
+
+    this.setState({
+      formData,
+      changesDetected: this.hasUpdated()
+    }, () => {
+        type === 'add' && this.setState({ [stateString]: '' });
+    });
   }
 
   handleDate = (event) => {
@@ -26,6 +117,18 @@ class EditForm extends Component {
     this.setState({
       formData,
       changesDetected: this.hasUpdated()
+    })
+  }
+
+  handleNewImageUpdate = event => {
+    this.setState({
+      newImage: event.target.value,
+    });
+  }
+
+  handleNewVideoUpdate = event => {
+    this.setState({
+      newVideo: event.target.value
     })
   }
 
@@ -56,7 +159,9 @@ class EditForm extends Component {
 
     this.setState({
       formData: merge({}, this.initialFormData),
-      changesDetected: false
+      changesDetected: false,
+      newImage: '',
+      newVideo: ''
     });
   }
 
@@ -140,7 +245,9 @@ class EditForm extends Component {
           placeholder={this.aboutPlaceholder()}
         />
         {/* images */}
+        {this.arrayMapper(images, 'images', _id)}
         {/* videos */}
+        {this.arrayMapper(videos, 'videos', _id)}
         {/* types */}
         {Object.keys(types).map(key => {
           return (
