@@ -249,19 +249,21 @@ class EditForm extends Component {
         {/* videos */}
         {this.arrayMapper(videos, 'videos', _id)}
         {/* types */}
-        {Object.keys(types).map(key => {
-          return (
-            <>
-              <label htmlFor={`${key}_${_id}`}>{typeLabels[key]}</label>
-              <input
-                id={`${key}_${_id}`}
-                type="checkbox"
-                checked={types[key]}
-                onChange={(event) => this.toggleCheckbox(event, key)}
-              />
-            </>
-          );
-        })}
+        <ul>
+          {Object.keys(types).map(key => {
+            return (
+                <li key={`${key}_${_id}`}>
+                  <label htmlFor={`${key}_${_id}`}>{typeLabels[key]}</label>
+                  <input
+                    id={`${key}_${_id}`}
+                    type="checkbox"
+                    checked={types[key]}
+                    onChange={(event) => this.toggleCheckbox(event, key)}
+                  />
+                </li>
+            );
+          })}
+        </ul>
         {/* press */}
         {/* changes detected? */}
         {/* save / cancel? */}
