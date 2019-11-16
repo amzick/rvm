@@ -9,10 +9,27 @@ class EditPage extends Component {
   constructor(props) {
     super(props);
 
+    const newPlay = {
+      _id: 'new',
+      title: '',
+      playwright: '',
+      location: '',
+      date: '',
+      about: '',
+      images: [],
+      videos: [],
+      types: {
+        isPlay: true,
+        isWriting: false,
+        isYouth: false
+      },
+      press: []
+    }
+
     this.state = {
       loading: true,
       errors: [],
-      plays: [{}]
+      plays: [newPlay]
     }
   }
 

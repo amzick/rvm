@@ -13,11 +13,15 @@ class EditForm extends Component {
     };
   }
 
-  handleDate = (ele) => {
+  aboutPlaceholder = () => {
+    return 'This is where you would enter more information about the play.Will be rendered as HTML so you can use < br /> line breaks, etc.Cast and crew info should go here.Anything else you want';
+  }
+
+  handleDate = (event) => {
     const { formData } = this.state;
     // dates are dumb
     // https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
-    formData.date = new Date(ele.target.value.replace(/-/g, '\/'));
+    formData.date = new Date(event.target.value.replace(/-/g, '\/'));
 
     this.setState({
       formData,
@@ -33,9 +37,9 @@ class EditForm extends Component {
     return this.initialFormData._id === 'new';
   }
 
-  onChange = (ele, field) => {
+  onChange = (event, field) => {
     const { formData } = this.state;
-    formData[field] = ele.target.value;
+    formData[field] = event.target.value;
 
     this.setState({
       formData,
@@ -43,16 +47,25 @@ class EditForm extends Component {
     });
   }
 
-  onSubmit = ele => {
-    ele.preventDefault();
+  onSubmit = event => {
+    event.preventDefault();
   }
 
-  onReset = ele => {
-    ele.preventDefault();
+  onReset = event => {
+    event.preventDefault();
 
     this.setState({
       formData: merge({}, this.initialFormData),
       changesDetected: false
+    });
+  }
+
+  toggleCheckbox = (event, key) => {
+    const { formData } = this.state;
+    formData.types[key] = event.target.checked;
+    this.setState({
+      formData,
+      changesDetected: this.hasUpdated()
     });
   }
 
@@ -71,6 +84,12 @@ class EditForm extends Component {
       press
     } = this.state.formData;
 
+    const typeLabels = {
+      isPlay: 'Plays: ',
+      isWriting: 'Dramaturgy: ',
+      isYouth: 'Youth: ',
+    }
+
     return (
       <form
         noValidate
@@ -83,7 +102,7 @@ class EditForm extends Component {
         <label htmlFor={`title_${_id}`}>Title:{' '}</label>
         <input
           id={`title_${_id}`}
-          onChange={(ele) => this.onChange(ele, 'title')}
+          onChange={(event) => this.onChange(event, 'title')}
           type="text"
           value={title}
         />
@@ -91,7 +110,7 @@ class EditForm extends Component {
         <label htmlFor={`playwright_${_id}`}>Playwright:{' '}</label>
         <input
           id={`playwright_${_id}`}
-          onChange={(ele) => this.onChange(ele, 'playwright')}
+          onChange={(event) => this.onChange(event, 'playwright')}
           type="text"
           value={playwright}
         />
@@ -99,7 +118,7 @@ class EditForm extends Component {
         <label htmlFor={`location_${_id}`}>Location:{' '}</label>
         <input
           id={`location_${_id}`}
-          onChange={(ele) => this.onChange(ele, 'location')}
+          onChange={(event) => this.onChange(event, 'location')}
           type="text"
           value={location}
         />
@@ -112,21 +131,35 @@ class EditForm extends Component {
           value={date ? moment(date).format(moment.HTML5_FMT.DATE) : ''}
         />
         {/* about - html */}
-        <label htmlFor="about">About:{' '}</label>
+        <label htmlFor={`about_${_id}`}>About:{' '}</label>
         <textarea
           id={`about_${_id}`}
-          onChange={(ele) => this.onChange(ele, 'about')}
+          onChange={(event) => this.onChange(event, 'about')}
           type="text"
           value={about}
+          placeholder={this.aboutPlaceholder()}
         />
         {/* images */}
         {/* videos */}
         {/* types */}
+        {Object.keys(types).map(key => {
+          return (
+            <>
+              <label htmlFor={`${key}_${_id}`}>{typeLabels[key]}</label>
+              <input
+                id={`${key}_${_id}`}
+                type="checkbox"
+                checked={types[key]}
+                onChange={(event) => this.toggleCheckbox(event, key)}
+              />
+            </>
+          );
+        })}
         {/* press */}
         {/* changes detected? */}
         {/* save / cancel? */}
         {changesDetected && <div>
-          <button type="submit">Save Changes</button>
+          <button type="submit">{_id === 'new' ? 'Add Play' : 'Save Changes'}</button>
           <button type="reset">Reset</button>
         </div>}
         {/* delete */}
