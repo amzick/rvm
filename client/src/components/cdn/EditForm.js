@@ -51,10 +51,10 @@ class EditForm extends Component {
           </li>
         );
       })}
-        <li key={`image-new_${_id}`}>
-          <label htmlFor={`image-new_${_id}`}>Add {`${fieldSingular}`}: </label>
+        <li key={`${field}-new_${_id}`}>
+          <label htmlFor={`${field}-new_${_id}`}>Add {`${fieldSingular}`}: </label>
           <input
-            id={`image-new_${_id}`}
+            id={`${field}-new_${_id}`}
             type="text"
             placeholder={`Add ${fieldSingular} urls here`}
             value={this.state[stateKeys[field]]}
