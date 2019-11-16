@@ -12,7 +12,7 @@ class EditPage extends Component {
     this.state = {
       loading: true,
       errors: [],
-      plays: []
+      plays: [{}]
     }
   }
 
@@ -21,7 +21,7 @@ class EditPage extends Component {
       .then(({ data }) => {
         this.setState({
           loading: false,
-          plays: data.plays
+          plays: this.state.plays.concat(data.plays)
         })
       })
       .catch(errors => {
@@ -41,8 +41,8 @@ class EditPage extends Component {
 
   render() {
     const { loading } = this.state;
-    const errors = this.state.errors.map(err => <div>Error: {err}</div>);
-    const plays = this.state.plays.map(play => <EditForm key={play._id} play={play} />);
+    const errors = this.state.errors.map(err => <div key={err}>Error: {err}</div>);
+    const plays = this.state.plays.map(play => <EditForm key={play._id || 'new'} play={play} />);
 
     return (
       <div className='edit-page'>

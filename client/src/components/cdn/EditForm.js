@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import { isEqual, merge } from 'lodash';
+import moment from 'moment';
 
 class EditForm extends Component {
   constructor(props) {
@@ -11,6 +11,18 @@ class EditForm extends Component {
       formData: merge({}, this.initialFormData),
       changesDetected: false
     };
+  }
+
+  handleDate = (ele) => {
+    const { formData } = this.state;
+    // dates are dumb
+    // https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
+    formData.date = new Date(ele.target.value.replace(/-/g, '\/'));
+
+    this.setState({
+      formData,
+      changesDetected: this.hasUpdated()
+    })
   }
 
   hasUpdated = () => {
@@ -37,7 +49,7 @@ class EditForm extends Component {
 
   onReset = ele => {
     ele.preventDefault();
-    
+
     this.setState({
       formData: merge({}, this.initialFormData),
       changesDetected: false
@@ -67,7 +79,7 @@ class EditForm extends Component {
         style={{ "border": "3px solid black", "marginBottom": "10px" }}
       >
         Edit Play:
-
+        {/* title */}
         <label htmlFor={`title_${_id}`}>Title:{' '}</label>
         <input
           id={`title_${_id}`}
@@ -75,8 +87,8 @@ class EditForm extends Component {
           type="text"
           value={title}
         />
-
-        <label htmlFor="playwright">Playwright:{' '}</label>
+        {/* playwright */}
+        <label htmlFor={`playwright_${_id}`}>Playwright:{' '}</label>
         <input
           id={`playwright_${_id}`}
           onChange={(ele) => this.onChange(ele, 'playwright')}
@@ -84,7 +96,7 @@ class EditForm extends Component {
           value={playwright}
         />
         {/* location */}
-        <label htmlFor="location">Location:{' '}</label>
+        <label htmlFor={`location_${_id}`}>Location:{' '}</label>
         <input
           id={`location_${_id}`}
           onChange={(ele) => this.onChange(ele, 'location')}
@@ -92,6 +104,13 @@ class EditForm extends Component {
           value={location}
         />
         {/* date */}
+        <label htmlFor={`date_${_id}`}>Date:{' '}</label>
+        <input
+          id={`date_${_id}`}
+          type="date"
+          onChange={this.handleDate}
+          value={date ? moment(date).format(moment.HTML5_FMT.DATE) : ''}
+        />
         {/* about - html */}
         <label htmlFor="about">About:{' '}</label>
         <textarea
