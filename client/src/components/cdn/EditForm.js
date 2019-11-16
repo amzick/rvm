@@ -6,6 +6,7 @@ class EditForm extends Component {
   constructor(props) {
     super(props);
     this.initialFormData = props.play;
+    this.initialFormData._id = this.initialFormData._id || 'new';
     this.state = {
       formData: merge({}, this.initialFormData),
       changesDetected: false
@@ -14,6 +15,10 @@ class EditForm extends Component {
 
   hasUpdated = () => {
     return !isEqual(this.initialFormData, this.state.formData);
+  }
+
+  isNewPlay = () => {
+    return this.initialFormData._id === 'new';
   }
 
   onChange = (ele, field) => {
@@ -89,7 +94,7 @@ class EditForm extends Component {
         {/* date */}
         {/* about - html */}
         <label htmlFor="about">About:{' '}</label>
-        <input
+        <textarea
           id={`about_${_id}`}
           onChange={(ele) => this.onChange(ele, 'about')}
           type="text"
