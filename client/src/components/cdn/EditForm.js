@@ -11,12 +11,17 @@ class EditForm extends Component {
       formData: merge({}, this.initialFormData),
       changesDetected: false,
       newImage: '',
+      newPress: {
+        publication: '',
+        quote: '',
+        url: ''
+      },
       newVideo: '',
     };
   }
 
   aboutPlaceholder = () => {
-    return 'This is where you would enter more information about the play.Will be rendered as HTML so you can use < br /> line breaks, etc.Cast and crew info should go here.Anything else you want';
+    return 'This is where you would enter more information about the play. Will be rendered as HTML so you can use < br /> line breaks, etc. Cast and crew info should go here. Anything else you want';
   }
 
   arrayMapper = (arr, field, _id) => {
@@ -36,17 +41,15 @@ class EditForm extends Component {
         {arr.map((ele, idx) => {
         return (
           <li key={`${field}-${idx}_${_id}`}>
-            <label htmlFor={`${field}-${idx}_${_id}`}>{`${fieldSingular} ${idx + 1}`}{idx === 0 && ' (primary)'} :</label>
+            <label htmlFor={`${field}-${idx}_${_id}`}>{`${fieldSingular} ${idx + 1}`}{idx === 0 && field === 'images' && ' (primary)'}:{' '}</label>
             <input
               id={`${field}-${idx}_${_id}`}
               type="text"
               value={ele}
               onChange={event => this.handleArrayUpdate(event, 'update', `${field}`, idx)}
             />
-            {/* move down */}
-            {idx < (arr.length - 1) && <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveDown', `${field}`, idx)}>&#8595;</button>}
-            {/* move up */}
-            {idx > 0 && <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveUp', `${field}`, idx)}>&#8593;</button>}
+            <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveDown', `${field}`, idx)} disabled={idx === (arr.length - 1)}>&#8595;</button>
+            <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveUp', `${field}`, idx)} disabled={idx === 0}>&#8593;</button>
             <button type="button" onClick={event => this.handleArrayUpdate(event, 'remove', `${field}`, idx)}>Remove</button>
           </li>
         );
@@ -126,10 +129,51 @@ class EditForm extends Component {
     });
   }
 
+  handleNewPressUpdate = (event, key, type) => {
+    event.preventDefault();
+    
+    const { formData, newPress } = this.state;
+    switch(true) {
+      case type === 'update':
+        newPress[key] = event.target.value;
+        break;
+      case type === 'add':
+        formData.press.push(newPress);
+        break;
+      default:
+        break;
+    }
+
+    this.setState({
+      newPress
+    }, () => {
+      type === 'add' &&
+      this.setState({
+        changesDetected: this.hasUpdated(),
+        formData,
+        newPress: {
+          publication: '',
+          quote: '',
+          url: ''
+        },
+      });
+    });
+  }
+
+
   handleNewVideoUpdate = event => {
     this.setState({
       newVideo: event.target.value
     })
+  }
+
+  handlePressUpdate = (event, key, idx) => {
+    const { formData } = this.state;
+    formData.press[idx][key] = event.target.value;
+    this.setState({
+      formData,
+      changesDetected: this.hasUpdated()
+    });
   }
 
   hasUpdated = () => {
@@ -161,6 +205,11 @@ class EditForm extends Component {
       formData: merge({}, this.initialFormData),
       changesDetected: false,
       newImage: '',
+      newPress: {
+        publication: '',
+        quote: '',
+        url: '',
+      },
       newVideo: ''
     });
   }
@@ -265,6 +314,64 @@ class EditForm extends Component {
           })}
         </ul>
         {/* press */}
+        Press Mentions (publication required with either a quotation, a link to the article, or both):
+        <ul>
+        {press.map((pressObj, idx) => {
+          return(
+            <li key={`press-${idx}_${_id}`}>
+              <label htmlFor={`press-${idx}_${_id}_pub`}>Publication: </label>
+              <input
+                id={`press-${idx}_${_id}_pub`}
+                type="text"
+                value={pressObj.publication || ''}
+                onChange={(event) => this.handlePressUpdate(event, 'publication', idx)}
+              />
+              <label htmlFor={`press-${idx}_${_id}_link`}>Link: </label>
+              <input
+                id={`press-${idx}_${_id}_link`}
+                type="text"
+                value={pressObj.url || ''}
+                onChange={(event) => this.handlePressUpdate(event, 'url', idx)}
+              />
+              <label htmlFor={`press-${idx}_${_id}_quote`}>Quote (html): </label>
+              <input
+                id={`press-${idx}_${_id}_quote`}
+                type="text"
+                value={pressObj.quote || ''}
+                onChange={(event) => this.handlePressUpdate(event, 'quote', idx)}
+              />
+              <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveDown', 'press', idx)} disabled={idx === (press.length - 1)}>&#8595;</button>
+              <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveUp', 'press', idx)} disabled={idx === 0}>&#8593;</button>
+              <button type="button" onClick={event => this.handleArrayUpdate(event, 'remove', 'press', idx)}>Remove</button>
+            </li>
+          )
+        })}
+        <li key={`new-press_${_id}`}>
+            Add Press Item: 
+            <label htmlFor={`new-press-pub_${_id}`}>Publication: </label>
+            <input
+              id={`new-press-pub_${_id}`}
+              type="text"
+              value={this.state.newPress.publication}
+              onChange={(event) => this.handleNewPressUpdate(event, 'publication', 'update')}
+            />
+            <label htmlFor={`new-press-url_${_id}`}>Link: </label>
+            <input
+              id={`new-press-url_${_id}`}
+              type="text"
+              value={this.state.newPress.url}
+              onChange={(event) => this.handleNewPressUpdate(event, 'url', 'update')}
+            />
+            <label htmlFor={`new-press-quote_${_id}`}>Quote (html): </label>
+            <input
+              id={`new-press-quote_${_id}`}
+              type="text"
+              value={this.state.newPress.quote}
+              onChange={(event) => this.handleNewPressUpdate(event, 'quote', 'update')}
+            />
+            <button type="button" onClick={(event) => this.handleNewPressUpdate(event, null, 'add')}>Add</button>
+        </li>
+        </ul>
         {/* changes detected? */}
         {/* save / cancel? */}
         {changesDetected && <div>
