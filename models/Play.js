@@ -6,8 +6,8 @@
   - about (rem enters whatever)
   - images (array of private imgur links)
   - videos (array of youtube or vimeo links)
-  - type: plays / youth / dramaturg
-  - press (reviews): array of objects with links with optional quote
+  - type: isPlay, isWriting, isYouth
+  - press (reviews): { publication: '', quote: '', url: '' }
 
   USING OBJECTS IN MONGOOSE
   https://stackoverflow.com/questions/42019679/object-type-in-mongoose

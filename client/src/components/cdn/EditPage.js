@@ -4,12 +4,13 @@ import Cookies from 'js-cookie';
 // import { Link } from 'react-router-dom';
 
 import EditForm from './EditForm';
+const { get, merge } = require('lodash');
 
 class EditPage extends Component {
   constructor(props) {
     super(props);
 
-    const newPlay = {
+    this.newPlay = {
       _id: 'new',
       title: '',
       playwright: '',
@@ -29,8 +30,10 @@ class EditPage extends Component {
     this.state = {
       loading: true,
       errors: [],
-      plays: [newPlay]
+      plays: [this.newPlay]
     }
+
+    this.addedPlayHandler = this.addedPlayHandler.bind(this);
   }
 
   componentDidMount() {
@@ -41,11 +44,24 @@ class EditPage extends Component {
           plays: this.state.plays.concat(data.plays)
         })
       })
-      .catch(errors => {
-        this.setState({
-          errors: [errors.toString()]
-        })
+      .catch(error => {
+        const data = get(error, 'response.data') || {};
+        const errors = [];
+        typeof data === String && errors.push(data);
+        this.setState({ errors })
       })
+  }
+
+  addedPlayHandler = (play) => {
+    // fuck it
+    window.location.reload();
+    // const { plays } = this.state;
+    // this.setState({
+    //   loading: true,
+    //   plays: [merge({}, this.newPlay)].concat(plays).push(play)
+    // }, () => {
+    //   this.setState({ loading: false }, this.forceUpdate);
+    // });
   }
 
   handleLogout = ele => {
@@ -59,12 +75,12 @@ class EditPage extends Component {
   render() {
     const { loading } = this.state;
     const errors = this.state.errors.map(err => <div key={err}>Error: {err}</div>);
-    const plays = this.state.plays.map(play => <EditForm key={play._id || 'new'} play={play} />);
+    const plays = this.state.plays.map(play => <EditForm key={play._id || 'new'} play={play} addedPlayHandler={this.addedPlayHandler}/>);
 
     return (
       <div className='edit-page'>
-        <p>Edit Page</p>
         <button type='button' onClick={this.handleLogout}>Logout</button>
+        <p>Edit Page</p><br/>
         {(errors.length > 0) && errors}
         {loading ? <div>Loading....</div> : plays}
       </div>

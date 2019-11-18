@@ -131,7 +131,7 @@ router.delete('/delete', (req, res) => {
         if (isMatch) {
           User.remove(user)
             .then(query => res.json(query))
-            .catch(err => console.log(err))
+            .catch(console.log)
         } else {
           return res.status(400).json({ password: "Password incorrect" })
         }

@@ -30,7 +30,7 @@ const db = require('./config/keys').MONGO_URI;
 // Connect to MongoDB
 mongoose.connect(db, { useNewUrlParser: true })
   .then(() => 'MongoDB successfully connected')
-  .catch(err => console.log(err));
+  .catch(console.log);
 
 // Passport middleware
 app.use(passport.initialize());

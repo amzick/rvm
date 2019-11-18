@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import { isEqual, merge } from 'lodash';
+import axios from 'axios';
+import { get, isEqual, merge } from 'lodash';
 import moment from 'moment';
 
 class EditForm extends Component {
   constructor(props) {
     super(props);
-    this.initialFormData = props.play;
+    this.initialFormData = merge({}, props.play);
     this.initialFormData._id = this.initialFormData._id || 'new';
     this.state = {
       formData: merge({}, this.initialFormData),
       changesDetected: false,
+      errors: [],
+      messages: [],
       newImage: '',
       newPress: {
         publication: '',
@@ -196,6 +199,47 @@ class EditForm extends Component {
 
   onSubmit = event => {
     event.preventDefault();
+    
+    const { formData } = this.state;
+
+    const [submitPath, axiosAction, addedPlayHandler] = formData._id === 'new'
+      ? ['/api/plays', axios.post, this.props.addedPlayHandler]
+      : [`/api/plays/${formData._id}`, axios.patch];
+    delete formData._id;
+
+    axiosAction(submitPath, {
+      ...formData
+    })
+      .then((resp) => {
+        const { play } = resp.data;
+        this.initialFormData = play;
+        this.setState({
+          formData: merge({ }, this.initialFormData),
+          messages: ['Play saved!'],
+          errors: [],
+          newImage: '',
+          newPress: {
+            publication: '',
+            quote: '',
+            url: ''
+          },
+          newVideo: '',
+        }, () => {
+          this.setState({
+            changesDetected: this.hasUpdated()
+          });
+          addedPlayHandler && addedPlayHandler();
+          setTimeout(() => this.setState({ messages: [] }), 1000);
+        });
+      })
+      .catch(error => {
+        const data = get(error, 'response.data.errors') || get(error, 'response.data') || {};
+        const errors = [];
+        for (const key in data) {
+          errors.push(data[key]);
+        }
+        this.setState({ errors })
+      });
   }
 
   onReset = event => {
@@ -204,6 +248,8 @@ class EditForm extends Component {
     this.setState({
       formData: merge({}, this.initialFormData),
       changesDetected: false,
+      messages: [],
+      errors: [],
       newImage: '',
       newPress: {
         publication: '',
@@ -224,7 +270,11 @@ class EditForm extends Component {
   }
 
   render() {
-    const { changesDetected } = this.state;
+    const {
+      changesDetected,
+      errors,
+      messages,
+    } = this.state;
     const {
       _id,
       title,
@@ -251,7 +301,7 @@ class EditForm extends Component {
         onReset={this.onReset}
         style={{ "border": "3px solid black", "marginBottom": "10px" }}
       >
-        Edit Play:
+        {_id === 'new' ? 'Add' : 'Edit'} Play:<br/>
         {/* title */}
         <label htmlFor={`title_${_id}`}>Title:{' '}</label>
         <input
@@ -283,7 +333,7 @@ class EditForm extends Component {
           type="date"
           onChange={this.handleDate}
           value={date ? moment(date).format(moment.HTML5_FMT.DATE) : ''}
-        />
+        /><br/>
         {/* about - html */}
         <label htmlFor={`about_${_id}`}>About:{' '}</label>
         <textarea
@@ -292,7 +342,7 @@ class EditForm extends Component {
           type="text"
           value={about}
           placeholder={this.aboutPlaceholder()}
-        />
+        /><br/>
         {/* images */}
         {this.arrayMapper(images, 'images', _id)}
         {/* videos */}
@@ -379,6 +429,13 @@ class EditForm extends Component {
           <button type="reset">Reset</button>
         </div>}
         {/* delete */}
+        {/* messaegs and errors */}
+        <ul>
+        {messages.map((message, idx) => <li key={`message-${idx}_${_id}`}>{message}</li>)}
+        </ul>
+        <ul>
+        {errors.map((error, idx) => <li key={`error-${idx}_${_id}`}>{error}</li>)}
+        </ul>
       </form>
     )
   }

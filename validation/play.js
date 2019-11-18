@@ -46,7 +46,26 @@ module.exports = function validatePlayInput(body) {
     errors.videos = 'Videos must be from Youtube or Vimeo';
   }
 
-  press.forEach(review => {
+  if (typeof types === 'string') {
+    try {
+      JSON.parse(req.body.types);
+    }
+    catch {
+      errors.types = 'types not valid js object';
+    }
+  }
+
+  if(typeof press === 'string') {
+    try {
+      JSON.parse(req.body.types);
+    }
+    catch {
+      errors.press = 'some of your press objects are not formatted correctly';
+      press = null;
+    }
+  }
+
+  press && press.forEach(review => {
     if (isEmpty(review.publication)) {
       errors.press = 'You need to enter at least a reviewer or publication name'
     } else if (isEmpty(review.url) && isEmpty(review.quote)) {
