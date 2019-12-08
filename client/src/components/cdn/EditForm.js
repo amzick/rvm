@@ -20,6 +20,7 @@ class EditForm extends Component {
         url: ''
       },
       newVideo: '',
+      shouldHidePlay: false,
       shouldShowDeleteWarning: false,
     };
   }
@@ -127,11 +128,6 @@ class EditForm extends Component {
     })
   }
 
-  handleDeletePlay = (event) => {
-    event.preventDefault();
-    console.log('goodbye forever');
-  }
-
   handleNewImageUpdate = event => {
     this.setState({
       newImage: event.target.value,
@@ -201,6 +197,26 @@ class EditForm extends Component {
       formData,
       changesDetected: this.hasUpdated()
     });
+  }
+
+  onDelete = (event) => {
+    event.preventDefault();
+    const { formData: { _id } } = this.state;
+    axios.delete(`/api/plays/${_id}`)
+      .then(() => {
+        console.log('goodbye forever');
+        this.setState({
+          shouldHidePlay: true
+        });
+      })
+      .catch(error => {
+        const data = get(error, 'response.data.errors') || get(error, 'response.data') || {};
+        const errors = [];
+        for (const key in data) {
+          errors.push(data[key]);
+        }
+        this.setState({ errors })
+      });
   }
 
   onSubmit = event => {
@@ -287,6 +303,7 @@ class EditForm extends Component {
       changesDetected,
       errors,
       messages,
+      shouldHidePlay,
       shouldShowDeleteWarning
     } = this.state;
     const {
@@ -308,14 +325,14 @@ class EditForm extends Component {
       isYouth: 'Youth: ',
     }
 
-    return (
+    const playForm = (
       <form
         noValidate
         onSubmit={this.onSubmit}
         onReset={this.onReset}
         style={{ "border": "3px solid black", "marginBottom": "10px" }}
       >
-        {_id === 'new' ? 'Add' : 'Edit'} Play:<br/>
+        {_id === 'new' ? 'Add' : 'Edit'} Play:<br />
         {/* title */}
         <label htmlFor={`title_${_id}`}>Title:{' '}</label>
         <input
@@ -347,7 +364,7 @@ class EditForm extends Component {
           type="date"
           onChange={this.handleDate}
           value={date ? moment(date).format(moment.HTML5_FMT.DATE) : ''}
-        /><br/>
+        /><br />
         {/* about - html */}
         <label htmlFor={`about_${_id}`}>About:{' '}</label>
         <textarea
@@ -356,7 +373,7 @@ class EditForm extends Component {
           type="text"
           value={about}
           placeholder={this.aboutPlaceholder()}
-        /><br/>
+        /><br />
         {/* images */}
         {this.arrayMapper(images, 'images', _id)}
         {/* videos */}
@@ -365,53 +382,53 @@ class EditForm extends Component {
         <ul>
           {Object.keys(types).map(key => {
             return (
-                <li key={`${key}_${_id}`}>
-                  <label htmlFor={`${key}_${_id}`}>{typeLabels[key]}</label>
-                  <input
-                    id={`${key}_${_id}`}
-                    type="checkbox"
-                    checked={types[key]}
-                    onChange={(event) => this.toggleCheckbox(event, key)}
-                  />
-                </li>
+              <li key={`${key}_${_id}`}>
+                <label htmlFor={`${key}_${_id}`}>{typeLabels[key]}</label>
+                <input
+                  id={`${key}_${_id}`}
+                  type="checkbox"
+                  checked={types[key]}
+                  onChange={(event) => this.toggleCheckbox(event, key)}
+                />
+              </li>
             );
           })}
         </ul>
         {/* press */}
         Press Mentions (publication required with either a quotation, a link to the article, or both):
         <ul>
-        {press.map((pressObj, idx) => {
-          return(
-            <li key={`press-${idx}_${_id}`}>
-              <label htmlFor={`press-${idx}_${_id}_pub`}>Publication: </label>
-              <input
-                id={`press-${idx}_${_id}_pub`}
-                type="text"
-                value={pressObj.publication || ''}
-                onChange={(event) => this.handlePressUpdate(event, 'publication', idx)}
-              />
-              <label htmlFor={`press-${idx}_${_id}_link`}>Link: </label>
-              <input
-                id={`press-${idx}_${_id}_link`}
-                type="text"
-                value={pressObj.url || ''}
-                onChange={(event) => this.handlePressUpdate(event, 'url', idx)}
-              />
-              <label htmlFor={`press-${idx}_${_id}_quote`}>Quote (html): </label>
-              <input
-                id={`press-${idx}_${_id}_quote`}
-                type="text"
-                value={pressObj.quote || ''}
-                onChange={(event) => this.handlePressUpdate(event, 'quote', idx)}
-              />
-              <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveDown', 'press', idx)} disabled={idx === (press.length - 1)}>&#8595;</button>
-              <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveUp', 'press', idx)} disabled={idx === 0}>&#8593;</button>
-              <button type="button" onClick={event => this.handleArrayUpdate(event, 'remove', 'press', idx)}>Remove</button>
-            </li>
-          )
-        })}
-        <li key={`new-press_${_id}`}>
-            Add Press Item (click add before saving play):<br/> 
+          {press.map((pressObj, idx) => {
+            return (
+              <li key={`press-${idx}_${_id}`}>
+                <label htmlFor={`press-${idx}_${_id}_pub`}>Publication: </label>
+                <input
+                  id={`press-${idx}_${_id}_pub`}
+                  type="text"
+                  value={pressObj.publication || ''}
+                  onChange={(event) => this.handlePressUpdate(event, 'publication', idx)}
+                />
+                <label htmlFor={`press-${idx}_${_id}_link`}>Link: </label>
+                <input
+                  id={`press-${idx}_${_id}_link`}
+                  type="text"
+                  value={pressObj.url || ''}
+                  onChange={(event) => this.handlePressUpdate(event, 'url', idx)}
+                />
+                <label htmlFor={`press-${idx}_${_id}_quote`}>Quote (html): </label>
+                <input
+                  id={`press-${idx}_${_id}_quote`}
+                  type="text"
+                  value={pressObj.quote || ''}
+                  onChange={(event) => this.handlePressUpdate(event, 'quote', idx)}
+                />
+                <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveDown', 'press', idx)} disabled={idx === (press.length - 1)}>&#8595;</button>
+                <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveUp', 'press', idx)} disabled={idx === 0}>&#8593;</button>
+                <button type="button" onClick={event => this.handleArrayUpdate(event, 'remove', 'press', idx)}>Remove</button>
+              </li>
+            )
+          })}
+          <li key={`new-press_${_id}`}>
+            Add Press Item (click add before saving play):<br />
             <label htmlFor={`new-press-pub_${_id}`}>Publication: </label>
             <input
               id={`new-press-pub_${_id}`}
@@ -434,32 +451,34 @@ class EditForm extends Component {
               onChange={(event) => this.handleNewPressUpdate(event, 'quote', 'update')}
             />
             <button type="button" onClick={(event) => this.handleNewPressUpdate(event, null, 'add')}>Add</button>
-        </li>
+          </li>
         </ul>
         {/* changes detected? */}
         {/* save / cancel? */}
-        {changesDetected && <div>
-          <button type="submit">{_id === 'new' ? 'Add Play' : 'Save Changes'}</button>
-          <button type="reset">Reset</button>
-        </div>}
+        <div>
+          <button type="submit" disabled={!changesDetected}>{_id === 'new' ? 'Add Play' : 'Save Changes'}</button>
+          <button type="reset" disabled={!changesDetected}>Reset</button>
+        </div>
         {/* delete */}
         {/* messaegs and errors */}
         <ul>
-        {messages.map((message, idx) => <li key={`message-${idx}_${_id}`}>{message}</li>)}
+          {messages.map((message, idx) => <li key={`message-${idx}_${_id}`}>{message}</li>)}
         </ul>
         <ul>
-        {errors.map((error, idx) => <li key={`error-${idx}_${_id}`}>{error}</li>)}
+          {errors.map((error, idx) => <li key={`error-${idx}_${_id}`}>{error}</li>)}
         </ul>
         {_id !== 'new' && !shouldShowDeleteWarning && <button onClick={this.toggleDeleteWarning}>Delete Play</button>}
         {shouldShowDeleteWarning &&
           <div>
             Are you sure? You can hide plays from displaying and preserve the data by unchecking all types.
-            <button onClick={this.handleDeletePlay}>Yes delete permanently.</button>
+            <button onClick={this.onDelete}>Yes delete permanently.</button>
             <button onClick={this.toggleDeleteWarning}>Nevermind.</button>
           </div>
         }
       </form>
     )
+
+    return (!shouldHidePlay ? playForm : null);
   }
 }
 
