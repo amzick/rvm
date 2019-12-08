@@ -42,7 +42,7 @@ router.patch('/:id', (req, res) => {
   if (!_id) {
     return res.status(400).json({ error: 'need an _id param to search plays db' });
   }
-  const play = Play.findOne({ _id })
+  Play.findOne({ _id })
     .then(play => {
       if (!play) {
         return res.status(404).json({ error: 'could not find a play with that id' });
@@ -65,9 +65,35 @@ router.patch('/:id', (req, res) => {
     })
     .catch((error) => {
       console.log('error ////', error);
-      res.status(400).json({ error: 'something went wrong somewhere' })
+      res.status(400).json({ error: 'something went wrong while patching' });
     });
 });
-// router.delete
+
+router.delete('/:id', (req, res) => {
+  // const { sessionToken } = req.cookies;
+  // if (!isAuthorized(sessionToken)) {
+  //   return res.status(401).send('Forbidden');
+  // }
+
+  const { id: _id } = req.params;
+  if (!_id) {
+    return res.status(400).json({ error: 'need an _id param to search plays db' });
+  }
+  Play.findOne({ _id })
+    .then(play => {
+      if (!play) {
+        return res.status(404).json({ error: 'could not find a play with that id' });
+      }
+      Play.remove(play)
+        .then(play => {
+          return res.status(200).json({ play });
+        })
+        .catch(errors => res.status(400).json({ errors }));
+    })
+    .catch((error) => {
+      console.log('error ////', error);
+      res.status(400).json({ error: 'something went wrong while deleting - you probably passed a bad id' });
+    });
+});
 
 module.exports = router;

@@ -20,6 +20,7 @@ class EditForm extends Component {
         url: ''
       },
       newVideo: '',
+      shouldShowDeleteWarning: false,
     };
   }
 
@@ -58,7 +59,7 @@ class EditForm extends Component {
         );
       })}
         <li key={`${field}-new_${_id}`}>
-          <label htmlFor={`${field}-new_${_id}`}>Add {`${fieldSingular}`}: </label>
+          <label htmlFor={`${field}-new_${_id}`}>Add {`${fieldSingular}`} (click add before saving play):<br /></label>
           <input
             id={`${field}-new_${_id}`}
             type="text"
@@ -70,7 +71,7 @@ class EditForm extends Component {
         </li>
       </ul>
     )
-  }
+  } 
 
   handleArrayUpdate = (event, type, field, idx) => {
     event.preventDefault();
@@ -124,6 +125,11 @@ class EditForm extends Component {
       formData,
       changesDetected: this.hasUpdated()
     })
+  }
+
+  handleDeletePlay = (event) => {
+    event.preventDefault();
+    console.log('goodbye forever');
   }
 
   handleNewImageUpdate = event => {
@@ -268,12 +274,20 @@ class EditForm extends Component {
       changesDetected: this.hasUpdated()
     });
   }
+  
+  toggleDeleteWarning = (event) => {
+    event.preventDefault();
+    this.setState({
+      shouldShowDeleteWarning: !this.state.shouldShowDeleteWarning
+    });
+  }
 
   render() {
     const {
       changesDetected,
       errors,
       messages,
+      shouldShowDeleteWarning
     } = this.state;
     const {
       _id,
@@ -397,7 +411,7 @@ class EditForm extends Component {
           )
         })}
         <li key={`new-press_${_id}`}>
-            Add Press Item: 
+            Add Press Item (click add before saving play):<br/> 
             <label htmlFor={`new-press-pub_${_id}`}>Publication: </label>
             <input
               id={`new-press-pub_${_id}`}
@@ -436,6 +450,14 @@ class EditForm extends Component {
         <ul>
         {errors.map((error, idx) => <li key={`error-${idx}_${_id}`}>{error}</li>)}
         </ul>
+        {_id !== 'new' && !shouldShowDeleteWarning && <button onClick={this.toggleDeleteWarning}>Delete Play</button>}
+        {shouldShowDeleteWarning &&
+          <div>
+            Are you sure? You can hide plays from displaying and preserve the data by unchecking all types.
+            <button onClick={this.handleDeletePlay}>Yes delete permanently.</button>
+            <button onClick={this.toggleDeleteWarning}>Nevermind.</button>
+          </div>
+        }
       </form>
     )
   }
