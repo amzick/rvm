@@ -26,7 +26,7 @@ app.use(cookieParser());
 // const config = new Config();
 
 // DB Config
-const db = require('./config/keys').MONGO_URI;
+const db = process.env.MONGO_URI || require('./config/keys').MONGO_URI;
 
 // Connect to MongoDB
 mongoose.connect(db, { useNewUrlParser: true })
