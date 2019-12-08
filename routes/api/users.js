@@ -41,9 +41,10 @@ function createNewUser ({ username, password }, res) {  //this sucks
 router.post('/signup', (req, res) => {
   // I don't want anyone to be able to create an account
   // didn't like returning the res out of the helper function for some reason ?
-  const { sessionToken } = req.cookies;
+  // todo: dry this up
+  const { session: sessionToken } = req.cookies;
   if (!isAuthorized(sessionToken)) {
-    return res.status(401).send('Forbidden');
+    return res.status(401).json({ error: 'Forbidden' });
   }
 
   const { errors, isValid } = validateSignUpInput(req.body);
@@ -129,7 +130,7 @@ router.delete('/delete', (req, res) => {
       // check pass word
       bcrypt.compare(password, user.password).then(isMatch => {
         if (isMatch) {
-          User.remove(user)
+          User.deleteOne(user)
             .then(query => res.json(query))
             .catch(console.log)
         } else {

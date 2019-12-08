@@ -260,7 +260,11 @@ class EditForm extends Component {
         for (const key in data) {
           errors.push(data[key]);
         }
-        this.setState({ errors })
+        !formData._id && (formData._id = 'new');
+        this.setState({ 
+          formData,
+          errors
+        });
       });
   }
 
