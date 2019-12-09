@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const keys = require('../../config/keys');
-const { get } = require('lodash');
 
 const validatePlayInput = require('../../validation/play');
 const isAuthorized = require('../../validation/isAuthorized');

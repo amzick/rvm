@@ -5,9 +5,12 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const path = require('path');
 
+// set secret envs
+// https://medium.com/codait/environment-variables-or-keeping-your-secrets-secret-in-a-node-js-app-99019dfff716
+require('dotenv').config();
+
 const users = require('./routes/api/users');
 const plays = require('./routes/api/plays');
-// const Config = require('./config');
 
 const app = express();
 
@@ -26,7 +29,7 @@ app.use(cookieParser());
 // const config = new Config();
 
 // DB Config
-const db = process.env.MONGO_URI || require('./config/keys').MONGO_URI;
+const db = process.env.MONGO_URI;
 
 // Connect to MongoDB
 mongoose.connect(db, { useNewUrlParser: true })
