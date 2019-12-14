@@ -9,7 +9,7 @@ const Play = require('../../models/Play');
 router.get('/', (req, res) => {
   Play.find({}, function(_, plays) {
     res.json({ plays });
-  })
+  });
 });
 
 router.post('/', (req, res) => {

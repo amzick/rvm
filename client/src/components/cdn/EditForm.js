@@ -3,6 +3,9 @@ import axios from 'axios';
 import { get, isEqual, merge } from 'lodash';
 import moment from 'moment';
 
+import MessagesList from './MessagesList';
+import ErrorsList from './ErrorsList';
+
 class EditForm extends Component {
   constructor(props) {
     super(props);
@@ -370,7 +373,7 @@ class EditForm extends Component {
           value={date ? moment(date).format(moment.HTML5_FMT.DATE) : ''}
         /><br />
         {/* about - html */}
-        <label htmlFor={`about_${_id}`}>About:{' '}</label>
+        <label htmlFor={`about_${_id}`}>About (html):{' '}</label>
         <textarea
           id={`about_${_id}`}
           onChange={(event) => this.onChange(event, 'about')}
@@ -463,14 +466,10 @@ class EditForm extends Component {
           <button type="submit" disabled={!changesDetected}>{_id === 'new' ? 'Add Play' : 'Save Changes'}</button>
           <button type="reset" disabled={!changesDetected}>Reset</button>
         </div>
+        {/* messages and errors */}
+        <MessagesList messages={messages} id={_id} />
+        <ErrorsList errors={errors} id={_id} />
         {/* delete */}
-        {/* messaegs and errors */}
-        <ul>
-          {messages.map((message, idx) => <li key={`message-${idx}_${_id}`}>{message}</li>)}
-        </ul>
-        <ul>
-          {errors.map((error, idx) => <li key={`error-${idx}_${_id}`}>{error}</li>)}
-        </ul>
         {_id !== 'new' && !shouldShowDeleteWarning && <button onClick={this.toggleDeleteWarning}>Delete Play</button>}
         {shouldShowDeleteWarning &&
           <div>

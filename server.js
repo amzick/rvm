@@ -11,6 +11,7 @@ require('dotenv').config();
 
 const users = require('./routes/api/users');
 const plays = require('./routes/api/plays');
+const infos = require('./routes/api/infos');
 
 const app = express();
 
@@ -45,6 +46,7 @@ require('./config/passport')(passport);
 // Routes
 app.use('/api/users', users);
 app.use('/api/plays', plays);
+app.use('/api/infos', infos);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

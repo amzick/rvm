@@ -3,6 +3,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 // import { Link } from 'react-router-dom';
 
+import InfoForm from './InfoForm';
 import EditForm from './EditForm';
 const { get, merge } = require('lodash');
 
@@ -80,9 +81,12 @@ class EditPage extends Component {
     return (
       <div className='edit-page'>
         <button type='button' onClick={this.handleLogout}>Logout</button>
-        <p>Edit Page</p><br/>
         {(errors.length > 0) && errors}
-        {loading ? <div>Loading....</div> : plays}
+        <h1>Edit Page</h1><br/>
+        <h2>Edit Personal Info (html):</h2>
+        <InfoForm />
+        <h2>Edit Plays:</h2>
+        {loading ? <div>Loading plays....</div> : plays}
       </div>
     )
   }
