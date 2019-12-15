@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import { get } from 'lodash';
 
@@ -59,7 +59,8 @@ class Login extends Component {
       this.setState({
         errors: {},
       });
-      window.location.href='/edit';
+
+      window.location.href = document.referrer || '/edit';
     })
     .catch(err => {
       let errors = get(err, 'response.data');

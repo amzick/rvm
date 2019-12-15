@@ -30,7 +30,7 @@ class InfoForm extends Component {
       })
       .catch(error => {
         this.setState({
-          errors: [error]
+          errors: [error.message]
         });
       });
   }
