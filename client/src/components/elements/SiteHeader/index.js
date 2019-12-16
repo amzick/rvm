@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 
 import './styles.scss';
 
 const SiteHeader = () => (
   <header>
-    <h1>Rem Myers</h1>
+    <Link to='/'>
+      <h1>Rem Myers</h1>
+    </Link>
     <span className='header--subtitle'>Play Director and Dramaturg</span>
   </header>
 )

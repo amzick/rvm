@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 
 import InfoForm from './InfoForm';
 import EditForm from './EditForm';
-const { get, merge } = require('lodash');
+const { get } = require('lodash');
 
 class EditPage extends Component {
   constructor(props) {
