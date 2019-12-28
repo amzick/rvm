@@ -1,18 +1,2 @@
-import React from 'react';
-
-const SiteFooter = () => (
-  <footer>
-    <p>built by{' '}
-      <a
-        href='https://github.com/amzick'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        &#x00040;amzick
-      </a>
-    </p>
-    <p>Social Links</p>
-  </footer>
-)
-
+import SiteFooter from './SiteFooter';
 export default SiteFooter;

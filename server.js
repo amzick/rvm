@@ -33,7 +33,7 @@ app.use(cookieParser());
 const db = process.env.MONGO_URI;
 
 // Connect to MongoDB
-mongoose.connect(db, { useNewUrlParser: true })
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => 'MongoDB successfully connected')
   .catch(console.log);
 
