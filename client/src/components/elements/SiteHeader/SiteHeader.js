@@ -8,7 +8,7 @@ const SiteHeader = () => (
     <Link to='/'>
       <h1>Rem Myers</h1>
     </Link>
-    <span className='header--subtitle'>Play Director and Dramaturg</span>
+    <span className='header__subtitle'>Play Director and Dramaturg</span>
   </header>
 )
 
