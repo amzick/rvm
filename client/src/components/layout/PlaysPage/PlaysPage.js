@@ -6,9 +6,20 @@ import './styles.scss';
 
 class PlaysPage extends Component {
   render() {
+    const { plays = [] } = this.props;
+    const playsDisplay = plays.map(play => {
+      return (
+        <div>
+          {<PlayCard />} for {play.title}:
+          <br />
+          {play.about}
+        </div>
+      )
+    })
+
     return <div>
       PlaysPage:
-      <PlayCard />
+      {playsDisplay}
     </div>;
   }
 }
