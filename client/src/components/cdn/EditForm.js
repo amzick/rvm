@@ -123,7 +123,7 @@ class EditForm extends Component {
     const { formData } = this.state;
     // dates are dumb
     // https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
-    formData.date = new Date(event.target.value.replace(/-/g, '\/'));
+    formData.date = new Date(event.target.value.replace(/-/g, '/'));
 
     this.setState({
       formData,

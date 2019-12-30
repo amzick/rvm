@@ -12,7 +12,7 @@ function convertTitleToRegExp(title) {
 
 function convertTitleToUrl (title) {
   return title
-    .replace(/[.,\/#!$%\^@&\*;:{}=\-_`~()]/g, '')
+    .replace(/[.,\/#!$%\^@&\*;:{}=\-_`~()\?]/g, '')
     .replace(/\s+/g, '-')
     .toLowerCase();
 };

@@ -12,6 +12,20 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Route
+          exact
+          path='/plays/:title'
+          render={({ match }) => {
+            // no clue why but I have to have this route first or the component doesn't get the params. infuriating. probably because i'm using hashrouter with router. idk
+            return <Redirect to={`/#/plays/${match.params.title}`} />
+            // no idea why this shit doesn't fucking work. very frustrating. when doing it this way nothing loads on redirect
+            // return <Redirect
+            //   to={{
+            //     pathname: `/#/plays/${match.params.title}`,
+            //     state: { title: match.params.title }
+            //   }} />
+          }}
+        />
         <Route exact path="/" component={Landing} />
         <AuthRoute exact path="/login" component={Login} />
         <ProtectedRoute exact path="/edit" component={EditPage} />

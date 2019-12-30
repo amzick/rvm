@@ -6,9 +6,8 @@ import isLoggedIn from '../../../utils/isLoggedIn';
 
 class Landing extends Component {
   render() {
-
     return (isLoggedIn()
-      ? <BasePage />
+      ? <BasePage {...this.props} />
       : <div>
           <p>Under construction!</p>
           <Link to='/login'>Log In</Link>
