@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import { get } from 'lodash';
 
+import AmpCarousel from '../../elements/AmpCarousel';
+
 import './styles.scss';
 
 class IndividualPlayPage extends Component {
@@ -61,15 +63,15 @@ class IndividualPlayPage extends Component {
         videos
       } = play);
     
-
     return loading || !play
       ? <div>Loading Individual Play Page</div>
-      : (<div>
-        Title: {title}<br />
-        playwright: {playwright}<br />
-        about: {about}<br />
-        location: {location}<br />
-        images: <img src={images[0]} /><br />
+      : (<div className='individual-play-page'>
+        <h2>{title}</h2>
+        <span className='individual-play-page__playwright'>By {playwright}</span>
+        <div className='individual-play-page__about' dangerouslySetInnerHTML={{__html: about}}></div>
+        <span className='individual-play-page__location'>{location}</span>
+        {/* <amp-img src={images[0]} /> */}
+        {<AmpCarousel images={images} title={title} />}
         {/* press: {press}<br /> */}
         videos: {videos}<br />
       </div>)
