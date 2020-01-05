@@ -16,13 +16,8 @@ const PlayCard = ({ play }) => {
   }
 
   const {
-    about,
     images,
-    location,
-    press,
-    playwright,
     title,
-    videos
   } = play;
 
   const href = convertTitleToUrl(title);
@@ -34,13 +29,8 @@ const PlayCard = ({ play }) => {
       }}
     >
       <div className='playcard'>
-        Title: {title}<br />
-        playwright: {playwright}<br />
-        about: {about}<br />
-        location: {location}<br />
-        images: <img src={images[0]}/><br />
-        {/* press: {press}<br /> */}
-        videos: {videos}<br />
+        {title}<br />
+        <img src={images[0]} alt={`Actors performing ${title}`}/><br />
       </div>
     </Link>
   )

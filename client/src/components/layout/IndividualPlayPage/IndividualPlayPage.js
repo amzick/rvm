@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { get } from 'lodash';
 
-import AmpCarousel from '../../elements/AmpCarousel';
+import Carousel from '../../elements/Carousel';
 
 import './styles.scss';
 
@@ -21,12 +21,15 @@ class IndividualPlayPage extends Component {
   }
 
   componentDidMount() {
-    const { play } = this.state;
-    if (!play) {
-      this.fetchPlay();
-    }
+    // const { play } = this.state;
+    // if (!play) {
+    //   this.fetchPlay();
+    // }
+    // props are getting mixed up all the time dont have time to figure it out
+    // sucks to fetch every time 
+    this.fetchPlay();
   }
-
+  
   componentDidUpdate(prevProps) {
     const prevTitle = get(prevProps, 'match.params.title');
     const currentTitle = get(this.props, 'match.params.title');
@@ -46,6 +49,9 @@ class IndividualPlayPage extends Component {
           play
         });
       })
+      .catch(errors => {
+        console.warn('/// IPP fetchPlay errors', errors);
+      })
   }
 
   render() {
@@ -57,7 +63,7 @@ class IndividualPlayPage extends Component {
         about,
         images,
         location,
-        press,
+        // press,
         playwright,
         title,
         videos
@@ -71,7 +77,7 @@ class IndividualPlayPage extends Component {
         <div className='individual-play-page__about' dangerouslySetInnerHTML={{__html: about}}></div>
         <span className='individual-play-page__location'>{location}</span>
         {/* <amp-img src={images[0]} /> */}
-        {<AmpCarousel images={images} title={title} />}
+        {<Carousel images={images} title={title} />}
         {/* press: {press}<br /> */}
         videos: {videos}<br />
       </div>)
