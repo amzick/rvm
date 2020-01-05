@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import axios from 'axios';
 
-import Navigation from '../../layout/Navigation';
-import SiteHeader from '../../elements/SiteHeader';
-import SiteFooter from '../../elements/SiteFooter';
-import PlaysPage from '../PlaysPage';
+import Bio from '../Bio';
 import IndividualPlayPage from '../IndividualPlayPage';
+import Manifesto from '../Manifesto';
+import Navigation from '../../layout/Navigation';
+import PlaysPage from '../PlaysPage';
+import SiteFooter from '../../elements/SiteFooter';
+import SiteHeader from '../../elements/SiteHeader';
 
 import filterPlays from '../../helpers/filterPlays';
 
@@ -31,8 +33,11 @@ class BasePage extends Component {
     super(props);
 
     this.state = {
+      bio: '',
       individualPlay: undefined,
-      loading: true,
+      loadingInfo: true,
+      loadingPlays: true,
+      manifesto: '',
       plays: [],
       writing: [],
       youth: []
@@ -40,7 +45,7 @@ class BasePage extends Component {
   }
 
   componentDidMount() {
-    if (this.state.loading) {
+    if (this.state.loadingPlays) {
       axios.get('/api/plays')
         .then(({ data }) => {
           const { plays: allPlays } = data;
@@ -56,16 +61,30 @@ class BasePage extends Component {
 
           this.setState({
             individualPlay,
-            loading: false,
+            loadingPlays: false,
             plays: filterPlays(allPlays),
             writing: filterPlays(allPlays, 'isWriting'),
             youth: filterPlays(allPlays, 'isYouth')
           });
         })
     }
+
+    if (this.state.loadingInfo) {
+      axios.get('/api/infos/rem')
+        .then(({ data }) => {
+          const { info: { bio, manifesto } } = data;
+          this.setState({
+            bio,
+            loading: false,
+            manifesto
+          });
+        })
+    }
   }
 
   render() {
+    const { bio, manifesto } = this.state;
+
     return (
       <HashRouter>
         <div>
@@ -74,10 +93,10 @@ class BasePage extends Component {
           <SiteHeader />
           <br />
           <Route exact path='/'>
-            <p>Manifesto</p>
+            <Manifesto manifesto={manifesto} />
           </Route>
           <Route path='/about'>
-            <p>Bio</p>
+            <Bio bio={bio} />
           </Route>
           <Route exact path='/plays'>
             <PlaysPage plays={this.state.plays}/>
@@ -89,8 +108,8 @@ class BasePage extends Component {
             <PlaysPage plays={this.state.youth}/>
           </Route>
           <Route path='/plays/:title'>
-            {this.state.loading
-            ? <div>Loading ...</div>
+            {this.state.loadingPlays
+            ? <div>LoadingPlays ...</div>
             : <IndividualPlayPage play={this.state.individualPlay}/>}
           </Route>
           <br />

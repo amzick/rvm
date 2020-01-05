@@ -5,8 +5,8 @@ import ExternalLink from '../../helpers/ExternalLink';
 import './styles.scss';
 
 const facebookIcon = <span className="fab fa-facebook-square"></span>;
-const instagramIcon = <span class="fab fa-instagram"></span>
-const linkedInIcon = <span class="fab fa-linkedin"></span>
+const instagramIcon = <span className="fab fa-instagram"></span>
+const linkedInIcon = <span className="fab fa-linkedin"></span>
 
 const SocialLinks = () => (
     <div className='social-links'>
