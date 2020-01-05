@@ -1,19 +1,18 @@
 import React from 'react';
 
+import SocialLinks from '../SocialLinks';
+import ExternalLink from '../../helpers/ExternalLink';
+
 import './styles.scss';
 
 const SiteFooter = () => (
-  <footer>
+  <footer className='site-footer'>
     <p>built by{' '}
-      <a
-        href='https://github.com/amzick'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
+      <ExternalLink href='https://github.com/amzick'>
         &#x00040;amzick
-      </a>
+      </ExternalLink>
     </p>
-    <p>Social Links</p>
+    <SocialLinks />
   </footer>
 )
 
