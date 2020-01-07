@@ -5,6 +5,8 @@ import axios from 'axios';
 import { get } from 'lodash';
 
 import Carousel from '../../elements/Carousel';
+import PressItem from '../../elements/PressItem';
+import VideoPlayer from '../../elements/VideoPlayer';
 
 import './styles.scss';
 
@@ -63,11 +65,14 @@ class IndividualPlayPage extends Component {
         about,
         images,
         location,
-        // press,
+        press,
         playwright,
         title,
         videos
       } = play);
+
+    const pressItems = press.map(press => <PressItem key={`press-item-${press._id}`} press={press} />);
+    const videoItems = videos.map(video => <VideoPlayer key={video} video={video} />);
     
     return loading || !play
       ? <div>Loading Individual Play Page</div>
@@ -76,10 +81,10 @@ class IndividualPlayPage extends Component {
         <span className='individual-play-page__playwright'>By {playwright}</span>
         <div className='individual-play-page__about' dangerouslySetInnerHTML={{__html: about}}></div>
         <span className='individual-play-page__location'>{location}</span>
-        {/* <amp-img src={images[0]} /> */}
         {<Carousel images={images} title={title} />}
-        {/* press: {press}<br /> */}
-        videos: {videos}<br />
+        {((press && press.length) || (videos && videos.length)) && <h3>Media</h3>}
+        {press && press.length && pressItems}
+        {videos && videos.length && videoItems}
       </div>)
   }
 }
