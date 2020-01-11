@@ -5,4 +5,12 @@
   import base files: resets, variables, mixings, utility classes
 */
 @import
-  'base/reset';
+  'base/reset',
+  'base/variables';
+
+  /*
+    import fonts and typography
+  */
+@import
+  'base/fonts',
+  'base/typography';

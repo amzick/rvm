@@ -71,8 +71,8 @@ class IndividualPlayPage extends Component {
         videos
       } = play);
 
-    const pressItems = press.map(press => <PressItem key={`press-item-${press._id}`} press={press} />);
-    const videoItems = videos.map(video => <VideoPlayer key={video} video={video} />);
+    const pressItems = press && press.map(press => <PressItem key={`press-item-${press._id}`} press={press} />);
+    const videoItems = videos && videos.map(video => <VideoPlayer key={video} video={video} />);
     
     return loading || !play
       ? <div>Loading Individual Play Page</div>

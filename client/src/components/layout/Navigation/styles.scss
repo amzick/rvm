@@ -1,0 +1,11 @@
+@import '../../../stylesheets/base/variables.scss';
+
+.site-navigation {
+  a {
+    font-family: $header-font-family;
+    // todo choose color pallette
+    color: seagreen;
+    text-decoration: none;
+    padding: 0 10px;
+  }
+}

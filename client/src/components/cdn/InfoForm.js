@@ -81,7 +81,7 @@ class InfoForm extends Component {
         style={{ "border": "3px solid blue", "marginBottom": "10px" }}
       >
         {/* Manifesto */}
-        <label htmlFor='manifesto'>Manifesto (use h3 instead of p tags):{' '}</label>
+        <label htmlFor='manifesto'>Manifesto:{' '}</label>
         <textarea 
           id='manifesto'
           onChange={(event) => this.onChange(event, 'manifesto')}

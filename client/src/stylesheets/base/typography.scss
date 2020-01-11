@@ -1,0 +1,22 @@
+body {
+  color: $base-text-color;
+  font-family: $base-text-font-family;
+}
+
+a, a:link, a:visited {
+  // TODO choose colors... 
+  color: blue;
+}
+
+h1 {
+  color: $base-text-color;
+  font-family: $display-header-font-family;
+  // TODO: choose all font sizes
+  font-size: 4.5rem; 
+}
+
+h2, h3, h4, h5 {
+  font-family: $header-font-family;
+  // font-family: $header-font-family-2;
+  font-weight: normal;
+}

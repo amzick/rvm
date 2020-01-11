@@ -1,10 +1,18 @@
-0. Chores
-- Prettier
+0. Chores / things to learn any time
+- under constuction -> node env
+- [Loading Spinner Flickering](https://blog.bitsrc.io/a-brief-history-of-flickering-spinners-c9eecd6053)
+- refactor ugly code
+- [FOUT](https://css-tricks.com/fout-foit-foft/)
+- SEO
+- Security
+- Prettier / eslint
 - Jsdoc
 - Tests
 - Anything Labeled TODO
 - Work through end of readme links
 - write up on experience
+- kubernetes ?
+- convert to typescript ?
 
 1. Backend and Auth
 https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-1-c405048e3669
@@ -26,7 +34,7 @@ ref: https://www.caitlinlowans.com/
 
 [UI Design Elements Glossary](https://careerfoundry.com/en/blog/ui-design/ui-element-glossary/)
 
-Sass Architecture
+### Sass Architecture
 [Modern CSS Reset](https://dev.to/hankchizljaw/a-modern-css-reset-6p3)
 [Sass File Structure - using simple](https://itnext.io/structuring-your-sass-projects-c8d41fa55ed4)
 [Sass Structure Boilerplate](https://github.com/HugoGiraudel/sass-boilerplate/blob/master/stylesheets/main.scss)
@@ -36,7 +44,23 @@ note: about examples are using css modules, which I'm not using. use `import ./s
 [Modular Design in Greater Detail](https://medium.com/@markmuskardin/intro-to-css-architecture-for-react-apps-da0ec1753c86)
 [Class Naming with BEM Convention](http://getbem.com/naming/)
 
-[Loading Spinner Flickering](https://blog.bitsrc.io/a-brief-history-of-flickering-spinners-c9eecd6053)
+### Choosing a Typeface
+[Technical Typography](https://www.smashingmagazine.com/2011/03/technical-web-typography-guidelines-and-techniques/#tt-face)
+[Combining Typefaces](https://www.smashingmagazine.com/2010/11/best-practices-of-combining-typefaces/)
+[Proportional vs Monospace Fonts](https://www.techwalla.com/articles/proportional-vs-monospace-fonts)
+[Display typeface](https://en.wikipedia.org/wiki/Display_typeface)
+
+Examples:
+https://www.siteinspire.com/
+https://www.typewolf.com/
+https://www.awwwards.com/
+https://hoverstat.es/
+https://www.semplice.com/
+https://themeforest.net/category/wordpress
+https://fontsinuse.com/in/2/formats/3/web
+
+?. SEO
+[Header Tags](https://www.hobo-web.co.uk/headers/)
 
 ## Interesting Links:
 Node.js best practices

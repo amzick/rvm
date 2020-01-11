@@ -1,0 +1,39 @@
+// Forum: https://fonts.google.com/specimen/Forum?selection.family=Forum
+// Display Headers
+@font-face {
+  font-family: 'Forum';
+  src: local('Forum'), url('../../assets/fonts/Forum-Regular.ttf') format('truetype');
+}
+ 
+// Tajawal: https://fonts.google.com/specimen/Tajawal?selection.family=Tajawal
+// Headers
+@font-face {
+  font-family: 'Tajawal';
+  src: local('Tajawal'), url('../../assets/fonts/Tajawal-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Tajawal';
+  src: local('Tajawal'), url('../../assets/fonts/Tajawal-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+// Oxygen: https://fonts.google.com/specimen/Oxygen?selection.family=Oxygen
+// Sub Headers (Monotype)
+@font-face {
+  font-family: 'Oxygen';
+  src: local('Oxygen'), url('../../assets/fonts/Oxygen-Regular.ttf') format('truetype');
+}
+
+// Maitree: https://fonts.google.com/specimen/Maitree?selection.family=Maitree
+// Base Text (serif)
+@font-face {
+  font-family: 'Maitree';
+  src: local('Maitree'), url('../../assets/fonts/Maitree-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Maitree';
+  src: local('Maitree'), url('../../assets/fonts/Maitree-Bold.ttf') format('truetype');
+  font-weight: bold;
+}

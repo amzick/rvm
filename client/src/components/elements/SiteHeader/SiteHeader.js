@@ -5,10 +5,10 @@ import './styles.scss';
 
 const SiteHeader = () => (
   <header>
-    <Link to='/'>
+    <Link className='site-header__title' to='/'>
       <h1>Rem Myers</h1>
     </Link>
-    <span className='header__subtitle'>Play Director and Dramaturg</span>
+    <span className='site-header__subtitle'>Play Director and Dramaturg</span>
   </header>
 )
 

@@ -1,3 +1,13 @@
-.header__subtitle {
+@import '../../../stylesheets/base/variables.scss';
+
+.site-header__title {
+  text-decoration: none;
+}
+
+.site-header__subtitle {
+  font-family: $sub-header-font-family;
+  // TODO: find better way to express
+  letter-spacing: 3.5px;
+  // todo : choose color
   color: grey;
 }
