@@ -55,6 +55,7 @@ class EditForm extends Component {
               type="text"
               value={ele}
               onChange={event => this.handleArrayUpdate(event, 'update', `${field}`, idx)}
+              style={{ "width": "750px"}}
             />
             <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveDown', `${field}`, idx)} disabled={idx === (arr.length - 1)}>&#8595;</button>
             <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveUp', `${field}`, idx)} disabled={idx === 0}>&#8593;</button>
@@ -70,6 +71,7 @@ class EditForm extends Component {
             placeholder={`Add ${fieldSingular} urls here`}
             value={this.state[stateKeys[field]]}
             onChange={onChangeFunctions[field]}
+            style={{ "width": "750px"}}
           />
           <button type="button" onClick={event => this.handleArrayUpdate(event, 'add', field)}>Add</button>
         </li>
@@ -380,6 +382,7 @@ class EditForm extends Component {
           type="text"
           value={about}
           placeholder={this.aboutPlaceholder()}
+          style={{ "width": "750px", "height": "400px"}}
         /><br />
         {/* images */}
         {this.arrayMapper(images, 'images', _id)}

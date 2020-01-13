@@ -1,3 +1,7 @@
+/*
+FONTS
+*/
+
 /// Display Header Font Family
 $display-header-font-family: 'Forum', 'Georgia', 'Times New Roman', Times, serif !default;
 
@@ -10,5 +14,39 @@ $sub-header-font-family: 'Oxygen', 'Helvetica Neue Light', 'Helvetica Neue', 'He
 /// Base Body Text
 $base-text-font-family: 'Maitree', 'Georgia', 'Times New Roman', Times, serif !default;
 
+/*
+COLORS
+*/
+
 /// Base Text Color
 $base-text-color: #333;
+
+/*
+SPACING
+*/
+
+// Common Breakpoints
+$mobile-max-width: 768px;
+$tablet-min-width: 769px;
+$tablet-max-width: 1024px;
+$desktop-min-width: 1025px;
+
+@mixin mobile-only {
+  @media only screen and (max-width: $mobile-max-width) { @content; }
+}
+
+@mixin tablet-and-smaller {
+  @media only screen and (max-width: $tablet-max-width) { @content; }
+}
+
+@mixin tablet-only {
+  @media only screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) { @content; }
+}
+
+@mixin tablet-and-larger {
+  @media only screen and (min-width: $tablet-min-width) { @content; }
+}
+
+@mixin desktop-only {
+  @media only screen and (min-width: $desktop-min-width) { @content; }
+}

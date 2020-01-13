@@ -1,3 +1,61 @@
+@import '../../../stylesheets/base/variables.scss';
+// TODO remove borders
+
 .playcard {
-  border: solid 1px blue;
+  border: solid 1px purple;
+
+  @include tablet-only {
+    border: solid 3px blue;
+  }
+
+  @include tablet-and-larger {
+    float: left;
+    width: 33.333%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  @include desktop-only {
+    border: solid 5px green;
+  }
+}
+
+.playcard__image-wrapper {
+  border: dotted 3px orange;
+
+  @include tablet-and-larger {
+    background-color: lightgoldenrodyellow;
+    display: block;
+    width: 100%;
+    position: relative;
+    height: 0;
+    padding-bottom: 66.6667%;
+    overflow: hidden;
+  }
+
+  img {
+    /*
+      keep image sizes consistent 
+      https://www.sitepoint.com/maintain-image-aspect-ratios-responsive-web-design/
+    */
+    border: dashed 2px red;
+
+    @include tablet-and-larger {
+      position: absolute;
+      display: block;
+      /*
+        comment the next few lines out to crop images
+        leave in to resize
+      */
+      // max-width: 100%;
+      // max-height: 100%;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
 }

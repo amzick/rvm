@@ -44,7 +44,9 @@ class PlaysPage extends Component {
     
     return loading
     ? <div>Loading ...</div>
-    : plays.map(play => <PlayCard key={`playcard-${play._id}`} play={play} />)
+    : (<div className='plays-page-canvas'>
+        {plays.map(play => <PlayCard key={`playcard-${play._id}`} play={play} />)}
+      </div>)
   }
 }
 

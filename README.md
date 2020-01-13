@@ -59,6 +59,9 @@ https://www.semplice.com/
 https://themeforest.net/category/wordpress
 https://fontsinuse.com/in/2/formats/3/web
 
+### Images
+[Consistent Sizing](https://www.sitepoint.com/maintain-image-aspect-ratios-responsive-web-design/)
+
 ?. SEO
 [Header Tags](https://www.hobo-web.co.uk/headers/)
 
