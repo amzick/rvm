@@ -31,6 +31,9 @@ $tablet-min-width: 769px;
 $tablet-max-width: 1024px;
 $desktop-min-width: 1025px;
 
+// Footer Size
+$footer-height: 200px;
+
 @mixin mobile-only {
   @media only screen and (max-width: $mobile-max-width) { @content; }
 }

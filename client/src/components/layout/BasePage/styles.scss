@@ -1,0 +1,14 @@
+@import "../../../stylesheets/base/variables.scss";
+
+.main-content-wrapper {
+  /*
+  sass var interpolation:
+  https://stackoverflow.com/questions/17982111/sass-variable-in-css-calc-function
+
+  sticky footer:
+  https://css-tricks.com/couple-takes-sticky-footer/
+  */
+  min-height: calc(99vh - #{$footer-height});
+  margin-bottom: 20px;
+  overflow-y: auto;
+}

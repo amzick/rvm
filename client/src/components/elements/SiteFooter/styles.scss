@@ -1,4 +1,20 @@
+@import "../../../stylesheets/base/variables.scss";
+
 .site-footer {
-  // todo remove borders
-  border: 1px solid purple;
+  // todo colors
+  min-height: $footer-height;
+  background: darkseagreen;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 5px solid indianred;
+  // was exploring a partial rule
+  // justify-content: space-between;
+  // width: 90vw;
+  // margin: 0 auto;
+
+  @include tablet-and-larger {
+    flex-direction: row;
+  }
 }

@@ -87,7 +87,7 @@ class BasePage extends Component {
 
     return (
       <HashRouter>
-        <div>
+        <div className='main-content-wrapper'>
           <Navigation />
           <br />
           <SiteHeader />
@@ -99,22 +99,23 @@ class BasePage extends Component {
             <Bio bio={bio} />
           </Route>
           <Route exact path='/plays'>
-            <PlaysPage plays={this.state.plays}/>
+            <PlaysPage plays={this.state.plays} />
           </Route>
           <Route path='/writing'>
-            <PlaysPage plays={this.state.writing}/>
+            <PlaysPage plays={this.state.writing} />
           </Route>
           <Route path='/youth'>
-            <PlaysPage plays={this.state.youth}/>
+            <PlaysPage plays={this.state.youth} />
           </Route>
           <Route path='/plays/:title'>
             {this.state.loadingPlays
-            ? <div>LoadingPlays ...</div>
-            : <IndividualPlayPage play={this.state.individualPlay}/>}
+              ? <div>LoadingPlays ...</div>
+              : <IndividualPlayPage play={this.state.individualPlay} />}
           </Route>
           <br />
-          <SiteFooter />
+          <div className='main-content-wrapper__push' />
         </div>
+        <SiteFooter />
       </HashRouter>
     )
   }

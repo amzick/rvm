@@ -1,6 +1,5 @@
 0. Chores / things to learn any time
 - flavicon
-- under constuction -> node env
 - [Loading Spinner Flickering](https://blog.bitsrc.io/a-brief-history-of-flickering-spinners-c9eecd6053)
 - refactor ugly code
 - [FOUT](https://css-tricks.com/fout-foit-foft/)
