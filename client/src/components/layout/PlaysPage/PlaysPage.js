@@ -41,10 +41,10 @@ class PlaysPage extends Component {
 
   render() {
     const { loading, plays } = this.state;
-    
+
     return loading
-    ? <div>Loading ...</div>
-    : (<div className='plays-page-canvas'>
+      ? <div>Loading ...</div>
+      : (<div className='plays-page-canvas'>
         {plays.map(play => <PlayCard key={`playcard-${play._id}`} play={play} />)}
       </div>)
   }

@@ -1,10 +1,13 @@
-@import '../../../stylesheets/base/variables.scss';
+@import "../../../stylesheets/base/variables.scss";
 // todo remove borders
 
 .plays-page-canvas {
-  border: 8px solid black;
-  width: 100%;
-  padding: 0;
-  margin: 0 0 2em 0;
+  // border: 8px solid black;
   min-height: 1000px;
+  padding: 0;
+  width: 100%;
+
+  @include tablet-and-larger {
+    padding: 0 2em;
+  }
 }

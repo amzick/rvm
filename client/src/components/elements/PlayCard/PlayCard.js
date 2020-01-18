@@ -30,7 +30,7 @@ const PlayCard = ({ play }) => {
       }}
     >
       <div className='playcard__image-wrapper'>
-        <img src={images[0]} alt={`Actors performing ${title}`}/><br />
+        <img src={images[0]} alt={`Actors performing ${title}`} /><br />
       </div>
       <div className='playcard__title'>{title}</div>
     </Link>
