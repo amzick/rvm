@@ -6,12 +6,12 @@ import isLoggedIn from '../../../utils/isLoggedIn';
 
 class Landing extends Component {
   render() {
-    return (isLoggedIn()
-      ? <BasePage {...this.props} />
-      : <div>
-          <p>Under construction!</p>
-          <Link to='/login'>Log In</Link>
-        </div>
+    return (process.env.REACT_APP_UNDER_CONSTRUCTION && !isLoggedIn()
+      ? <div>
+        <p>Under construction!</p>
+        <Link to='/login'>Log In</Link>
+      </div>
+      : <BasePage {...this.props} />
     )
   }
 }
