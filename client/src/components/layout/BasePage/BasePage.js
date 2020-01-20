@@ -5,8 +5,9 @@ import axios from 'axios';
 import Bio from '../Bio';
 import IndividualPlayPage from '../IndividualPlayPage';
 import Manifesto from '../Manifesto';
-import Navigation from '../../layout/Navigation';
+import Navigation from '../Navigation';
 import PlaysPage from '../PlaysPage';
+import WritingsPage from '../WritingsPage';
 import SiteFooter from '../../elements/SiteFooter';
 import SiteHeader from '../../elements/SiteHeader';
 
@@ -100,7 +101,8 @@ class BasePage extends Component {
             <PlaysPage plays={this.state.plays} />
           </Route>
           <Route path='/writing'>
-            <PlaysPage plays={this.state.writing} />
+            {/* <PlaysPage plays={this.state.writing} /> */}
+            <WritingsPage />
           </Route>
           <Route path='/youth'>
             <PlaysPage plays={this.state.youth} />
