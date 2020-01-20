@@ -3,8 +3,9 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 // import { Link } from 'react-router-dom';
 
-import InfoForm from './InfoForm';
 import EditForm from './EditForm';
+import InfoForm from './InfoForm';
+import WritingLinkForm from './WritingLinkForm';
 const { get } = require('lodash');
 
 class EditPage extends Component {
@@ -85,6 +86,8 @@ class EditPage extends Component {
         <h1>Edit Page</h1><br/>
         <h2>Edit Personal Info (html):</h2>
         <InfoForm />
+        <h2>Edit Dramaturg Links:</h2>
+        <WritingLinkForm />
         <h2>Edit Plays:</h2>
         {loading ? <div>Loading plays....</div> : plays}
       </div>

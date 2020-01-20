@@ -90,7 +90,7 @@ class EditForm extends Component {
 
     const swapElements = (arr, i, i2) => {
       [arr[i], arr[i2]] = [arr[i2], arr[i]];
-    }
+    };
 
     const { formData } = this.state;
     switch (true) {
