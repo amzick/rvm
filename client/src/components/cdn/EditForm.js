@@ -55,7 +55,7 @@ class EditForm extends Component {
               type="text"
               value={ele}
               onChange={event => this.handleArrayUpdate(event, 'update', `${field}`, idx)}
-              style={{ "width": "750px"}}
+              style={{ "width": "750px" }}
             />
             <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveDown', `${field}`, idx)} disabled={idx === (arr.length - 1)}>&#8595;</button>
             <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveUp', `${field}`, idx)} disabled={idx === 0}>&#8593;</button>
@@ -71,13 +71,13 @@ class EditForm extends Component {
             placeholder={`Add ${fieldSingular} urls here`}
             value={this.state[stateKeys[field]]}
             onChange={onChangeFunctions[field]}
-            style={{ "width": "750px"}}
+            style={{ "width": "750px" }}
           />
           <button type="button" onClick={event => this.handleArrayUpdate(event, 'add', field)}>Add</button>
         </li>
       </ul>
     )
-  } 
+  }
 
   handleArrayUpdate = (event, type, field, idx) => {
     event.preventDefault();
@@ -91,22 +91,22 @@ class EditForm extends Component {
     const swapElements = (arr, i, i2) => {
       [arr[i], arr[i2]] = [arr[i2], arr[i]];
     }
-  
+
     const { formData } = this.state;
-    switch(true) {
-      case(type === 'update'):
+    switch (true) {
+      case (type === 'update'):
         formData[field][idx] = event.target.value;
         break;
-      case(type === 'remove'):
+      case (type === 'remove'):
         formData[field].splice(idx, 1);
         break;
-      case(type === 'add'):
+      case (type === 'add'):
         formData[field].push(this.state[stateString]);
         break;
-      case(type === 'moveDown'):
+      case (type === 'moveDown'):
         swapElements(formData[field], idx, idx + 1);
         break;
-      case(type === 'moveUp'):
+      case (type === 'moveUp'):
         swapElements(formData[field], idx, idx - 1);
         break;
       default:
@@ -117,7 +117,7 @@ class EditForm extends Component {
       formData,
       changesDetected: this.hasUpdated()
     }, () => {
-        type === 'add' && this.setState({ [stateString]: '' });
+      type === 'add' && this.setState({ [stateString]: '' });
     });
   }
 
@@ -141,9 +141,9 @@ class EditForm extends Component {
 
   handleNewPressUpdate = (event, key, type) => {
     event.preventDefault();
-    
+
     const { formData, newPress } = this.state;
-    switch(true) {
+    switch (true) {
       case type === 'update':
         newPress[key] = event.target.value;
         break;
@@ -158,15 +158,15 @@ class EditForm extends Component {
       newPress
     }, () => {
       type === 'add' &&
-      this.setState({
-        changesDetected: this.hasUpdated(),
-        formData,
-        newPress: {
-          publication: '',
-          quote: '',
-          url: ''
-        },
-      });
+        this.setState({
+          changesDetected: this.hasUpdated(),
+          formData,
+          newPress: {
+            publication: '',
+            quote: '',
+            url: ''
+          },
+        });
     });
   }
 
@@ -226,7 +226,7 @@ class EditForm extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    
+
     const { formData } = this.state;
 
     const [submitPath, axiosAction, addedPlayHandler] = formData._id === 'new'
@@ -241,7 +241,7 @@ class EditForm extends Component {
         const { play } = resp.data;
         this.initialFormData = play;
         this.setState({
-          formData: merge({ }, this.initialFormData),
+          formData: merge({}, this.initialFormData),
           messages: ['Play saved!'],
           errors: [],
           newImage: '',
@@ -266,7 +266,7 @@ class EditForm extends Component {
           errors.push(data[key]);
         }
         !formData._id && (formData._id = 'new');
-        this.setState({ 
+        this.setState({
           formData,
           errors
         });
@@ -299,7 +299,7 @@ class EditForm extends Component {
       changesDetected: this.hasUpdated()
     });
   }
-  
+
   toggleDeleteWarning = (event) => {
     event.preventDefault();
     this.setState({
@@ -382,7 +382,7 @@ class EditForm extends Component {
           type="text"
           value={about}
           placeholder={this.aboutPlaceholder()}
-          style={{ "width": "750px", "height": "400px"}}
+          style={{ "width": "750px", "height": "400px" }}
         /><br />
         {/* images */}
         {this.arrayMapper(images, 'images', _id)}
@@ -424,12 +424,14 @@ class EditForm extends Component {
                   value={pressObj.url || ''}
                   onChange={(event) => this.handlePressUpdate(event, 'url', idx)}
                 />
+                <br />
                 <label htmlFor={`press-${idx}_${_id}_quote`}>Quote (html): </label>
-                <input
+                <textarea
                   id={`press-${idx}_${_id}_quote`}
                   type="text"
                   value={pressObj.quote || ''}
                   onChange={(event) => this.handlePressUpdate(event, 'quote', idx)}
+                  style={{ "width": "750px", "height": "133px" }}
                 />
                 <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveDown', 'press', idx)} disabled={idx === (press.length - 1)}>&#8595;</button>
                 <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveUp', 'press', idx)} disabled={idx === 0}>&#8593;</button>
@@ -453,12 +455,14 @@ class EditForm extends Component {
               value={this.state.newPress.url}
               onChange={(event) => this.handleNewPressUpdate(event, 'url', 'update')}
             />
+            <br />
             <label htmlFor={`new-press-quote_${_id}`}>Quote (html): </label>
-            <input
+            <textarea
               id={`new-press-quote_${_id}`}
               type="text"
               value={this.state.newPress.quote}
               onChange={(event) => this.handleNewPressUpdate(event, 'quote', 'update')}
+              style={{ "width": "750px", "height": "133px" }}
             />
             <button type="button" onClick={(event) => this.handleNewPressUpdate(event, null, 'add')}>Add</button>
           </li>

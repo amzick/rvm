@@ -6,9 +6,9 @@ import './styles.scss';
 const SiteHeader = () => (
   <header>
     <Link className='site-header__title' to='/'>
-      <h1>Rem Myers</h1>
+      <h1>Rem Van&nbsp;Aiken Myers</h1>
     </Link>
-    <span className='site-header__subtitle'>Play Director and Dramaturg</span>
+    <div className='site-header__subtitle'>Theatre Director and Dramaturg</div>
   </header>
 )
 

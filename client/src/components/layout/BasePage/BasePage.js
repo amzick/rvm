@@ -89,9 +89,7 @@ class BasePage extends Component {
       <HashRouter>
         <div className='main-content-wrapper'>
           <Navigation />
-          <br />
           <SiteHeader />
-          <br />
           <Route exact path='/'>
             <Manifesto manifesto={manifesto} />
           </Route>
