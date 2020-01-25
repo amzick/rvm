@@ -1,11 +1,58 @@
-@import '../../../stylesheets/base/variables.scss';
+@import "../../../stylesheets/base/variables.scss";
 
-.site-navigation {
-  a {
-    font-family: $header-font-family;
-    // todo choose color pallette
-    color: seagreen;
-    text-decoration: none;
-    padding: 0 10px;
+.navigation-menu {
+  padding: 0 10px;
+  font-family: $header-font-family;
+  // todo choose color pallette
+  color: seagreen;
+  text-decoration: none;
+  background: pink;
+  margin: 0 auto;
+  // todo remove
+  border: solid 1px black;
+}
+
+.navigation-menu--desktop {
+  @include mobile-only {
+    display: none;
   }
+  max-width: 350px;
+
+  ul {
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+  }
+}
+
+.navigation-menu--hamburger {
+  @include tablet-and-larger {
+    display: none;
+  }
+  text-align: center;
+  width: 100vw;
+
+  button {
+    @include remove-button-styling;
+    width: 100%;
+
+    &:focus {
+      // todo remove / style, edge case since mobile
+      background-color: red;
+    }
+  }
+
+  ul {
+    text-align: center;
+  }
+}
+
+.navigation-menu-list-item {
+  border: solid 1px blue;
+  text-transform: capitalize;
+}
+
+.navigation-menu-list-item--active {
+  color: white;
+  background-color: red;
 }

@@ -1,2 +1,5 @@
+import HamburgerMenu from './HamburgerMenu';
 import Navigation from './Navigation';
-export default Navigation;
+
+export { HamburgerMenu };
+export { Navigation };

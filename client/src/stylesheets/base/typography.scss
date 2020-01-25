@@ -3,9 +3,14 @@ body {
   font-family: $base-text-font-family;
 }
 
-a, a:link, a:visited {
-  // TODO choose colors... 
-  color: blue;
+a:not([class]) {
+  &:link, &:visited {
+    // TODO choose colors... 
+    // todo style
+    color: white;
+    background-color: purple;
+
+  }
 }
 
 h1 {

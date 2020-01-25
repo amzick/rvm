@@ -3,9 +3,10 @@ import { HashRouter, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import Bio from '../Bio';
+import { HamburgerMenu } from '../Navigation';
 import IndividualPlayPage from '../IndividualPlayPage';
 import Manifesto from '../Manifesto';
-import Navigation from '../Navigation';
+import { Navigation } from '../Navigation';
 import PlaysPage from '../PlaysPage';
 import WritingsPage from '../WritingsPage';
 import SiteFooter from '../../elements/SiteFooter';
@@ -89,8 +90,9 @@ class BasePage extends Component {
     return (
       <HashRouter>
         <div className='main-content-wrapper'>
-          <Navigation />
+          <HamburgerMenu />
           <SiteHeader />
+          <Navigation />
           <Route exact path='/'>
             <Manifesto manifesto={manifesto} />
           </Route>

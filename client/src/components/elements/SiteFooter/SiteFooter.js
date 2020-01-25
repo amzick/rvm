@@ -8,7 +8,7 @@ import './styles.scss';
 const SiteFooter = () => {
   return <footer className='site-footer'>
     <div className='site-footer__copyright'>&copy; {new Date().getFullYear()} Rem Myers</div>
-    <SocialLinks />
+    {/* <SocialLinks /> */}
     <div className='site-footer__credit'>Website built by{' '}
       <ExternalLink href='https://github.com/amzick'>
         &#x00040;amzick
