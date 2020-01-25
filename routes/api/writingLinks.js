@@ -37,10 +37,10 @@ router.get('/', (_, res) => {
 
 router.patch('/:id', (req, res) => {
   // todo: dry this up
-  // const { session: sessionToken } = req.cookies;
-  // if (!isAuthorized(sessionToken)) {
-  //   return res.status(401).json({ error: 'Forbidden' });
-  // }
+  const { session: sessionToken } = req.cookies;
+  if (!isAuthorized(sessionToken)) {
+    return res.status(401).json({ error: 'Forbidden' });
+  }
   const { id: _id } = req.params;
 
   if (!_id) {

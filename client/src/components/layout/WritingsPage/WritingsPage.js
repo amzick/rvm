@@ -30,14 +30,42 @@ class WritingsPage extends Component {
 
   render() {
     const { loading, writingLinks } = this.state;
-    
-    const linksToRender = writingLinks && writingLinks.map(({ text, url }, idx) => {
-      return <ExternalLink key={`writing-link-${idx}`} href={url}>{`${text}`}</ExternalLink>
-    });
-    
-    return loading || !linksToRender
+
+    const renderLinks = (array) => {
+      return (
+        <ul>
+          {array.map(({ section, text, url }, idx) => {
+            return (
+              <li key={`writing-link-${section}-${idx}`}>
+                <ExternalLink href={url}>{`${text}`}</ExternalLink>
+              </li>
+            )
+          })}
+        </ul>
+      )
+    };
+
+    let reviewLinks = [];
+    let dramaturgyLinks = [];
+
+    if (writingLinks) {
+      reviewLinks = writingLinks.filter(({ section }) => section === 'review');
+      dramaturgyLinks = writingLinks.filter(({ section }) => section === 'dramaturgy');
+    }
+
+
+    return loading || !writingLinks
       ? <div>Loading ...</div>
-      : <div>{linksToRender}</div>
+      : (
+        <div>
+          <h2>Writing</h2>
+          <p>Preamble</p>
+          <h3>Reviews</h3>
+          {renderLinks(reviewLinks)}
+          <h3>Dramaturgy</h3>
+          {renderLinks(dramaturgyLinks)}
+        </div>
+      )
   }
 }
 

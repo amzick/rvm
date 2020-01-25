@@ -1,15 +1,15 @@
 a. RVM feed back / MVPs
 - cv page (replace youth header)
-- Writing page - just html field
 - play name bug (Test)
 - play page preface
 - body font choice
 - nav / hamburger
 - color theme
 - style play page
+- flavicon
+- loading component
 
 0. Chores / things to learn any time
-- flavicon
 - [Loading Spinner Flickering](https://blog.bitsrc.io/a-brief-history-of-flickering-spinners-c9eecd6053)
 - refactor ugly code
 - [FOUT](https://css-tricks.com/fout-foit-foft/)

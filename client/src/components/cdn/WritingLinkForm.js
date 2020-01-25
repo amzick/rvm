@@ -16,8 +16,9 @@ class WritingLinkForm extends Component {
       loading: true,
       messages: [],
       newWritingLink: {
-        url: '',
-        text: ''
+        section: '',
+        text: '',
+        url: ''
       },
       patchId: '',
       writingLinks: [],
@@ -63,6 +64,12 @@ class WritingLinkForm extends Component {
               value={ele.url}
               onChange={event => this.handleArrayUpdate(event, 'update', 'url', idx)}
             />
+            <label htmlFor={`dramaturg-link-section-${idx}`}>Review or Dramaturgy? (selecting neither will hide):</label>
+            <select id={`dramaturg-link-section-${idx}`} value={ele.section} onChange={event => this.handleArrayUpdate(event, 'update', 'section', idx)}>
+              <option value=''>none</option>
+              <option value='review'>Review</option>
+              <option value='dramaturgy'>Dramaturgy</option>
+            </select>
             <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveDown', '', idx)} disabled={idx === (arr.length - 1)}>&#8595;</button>
             <button type="button" onClick={event => this.handleArrayUpdate(event, 'moveUp', '', idx)} disabled={idx === 0}>&#8593;</button>
             <button type="button" onClick={event => this.handleArrayUpdate(event, 'remove', '', idx)}>Remove</button>
@@ -86,6 +93,12 @@ class WritingLinkForm extends Component {
             value={this.state.newWritingLink.url}
             onChange={event => this.handleNewWritingLinkUpdate(event, 'url')}
           />
+          <label htmlFor={`dramaturg-link-section-new`}>Review or Dramaturgy? (selecting neither will hide):</label>
+          <select id={`dramaturg-link-section-new`} value={this.state.newWritingLink.section} onChange={event => this.handleNewWritingLinkUpdate(event, 'section')}>
+            <option value=''>none</option>
+            <option value='review'>Review</option>
+            <option value='dramaturgy'>Dramaturgy</option>
+          </select>
           <button type="button" onClick={event => this.handleArrayUpdate(event, 'add')}>Add</button>
         </li>
       </ul>

@@ -9,6 +9,10 @@ const Schema = mongoose.Schema;
 const WritingLinksSchema = new Schema({
   links: [
     {
+      section: {
+        type: String,
+        require: false
+      },
       text: {
         type: String,
         require: true
