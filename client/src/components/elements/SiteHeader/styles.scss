@@ -17,11 +17,16 @@
 }
 
 .site-header__subtitle {
-  margin: 0 auto;
+  margin: 25px auto 0;
   text-align: center;
   font-family: $sub-header-font-family;
   // TODO: find better way to express
   letter-spacing: 3.5px;
   // todo : choose color
   color: grey;
+
+  @include tablet-and-larger {
+    margin: 0 auto 25px;
+    // margin-bottom: 25px;
+  }
 }

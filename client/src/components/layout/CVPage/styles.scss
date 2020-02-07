@@ -1,0 +1,11 @@
+@import '../../../stylesheets/base/variables.scss';
+
+.cv-page__pdf {
+  @include mobile-only {
+    width: 100%;
+  }
+
+  @include tablet-and-larger {
+    min-height: 640px;
+  }
+}

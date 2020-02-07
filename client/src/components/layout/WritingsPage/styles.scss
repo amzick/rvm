@@ -1,1 +1,29 @@
 @import "../../../stylesheets/base/variables.scss";
+
+.writings-page__container {
+  margin-top: 25px;
+
+  > div {
+    flex-grow: 1;
+
+    ul {
+      padding: 10px;
+      
+      @include desktop-only {
+        padding: 0 50px;
+        text-align: start;
+      }
+
+      li {
+        margin: 10px 0;
+      }
+    }
+
+    @include desktop-only {
+      max-width: 50%;
+    }
+  }
+  @include desktop-only {
+    display: flex;
+  }
+}

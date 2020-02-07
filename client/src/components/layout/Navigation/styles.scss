@@ -4,12 +4,12 @@
   padding: 0 10px;
   font-family: $header-font-family;
   // todo choose color pallette
-  color: seagreen;
+  // color: seagreen;
   text-decoration: none;
-  background: pink;
+  // background: pink;
   margin: 0 auto;
   // todo remove
-  border: solid 1px black;
+  // border: solid 1px black;
 }
 
 .navigation-menu--desktop {
@@ -26,9 +26,10 @@
 }
 
 .navigation-menu--hamburger {
-  @include tablet-and-larger {
-    display: none;
-  }
+  margin: 30px 0 20px;
+  padding-bottom: 20px;
+  // todo pick colors
+  border-bottom: 1px dotted lightslategray;
   text-align: center;
   width: 100vw;
 
@@ -38,21 +39,35 @@
 
     &:focus {
       // todo remove / style, edge case since mobile
-      background-color: red;
+      // background-color: red;
+    }
+
+    &.navigation-menu--hamburger__button--expanded {
+      margin-bottom: 20px;
     }
   }
 
   ul {
     text-align: center;
+
+    li {
+      margin-bottom: 5px;
+    }
+  }
+
+  @include tablet-and-larger {
+    display: none;
   }
 }
 
 .navigation-menu-list-item {
-  border: solid 1px blue;
   text-transform: capitalize;
 }
 
-.navigation-menu-list-item--active {
-  color: white;
-  background-color: red;
+a.navigation-menu-list-item--active {
+  &:link,
+  &:visited {
+    // todo colors
+    color: red;
+  }
 }

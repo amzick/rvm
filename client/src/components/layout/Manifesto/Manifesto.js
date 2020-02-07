@@ -32,8 +32,8 @@ class Manifesto extends Component {
     return (loading || !manifesto)
       ? <div>Loading Manifesto</div>
       : (
-        <div>
-          <img src='/rvm-splash.jpg' />
+        <div className='page-content'>
+          <img height='800' width='1200' src='/rvm-splash.jpg' />
           <h2>Manifesto</h2>
           <div className='manifesto' dangerouslySetInnerHTML={{ __html: manifesto }} />
         </div>

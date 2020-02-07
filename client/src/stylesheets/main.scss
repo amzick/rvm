@@ -8,9 +8,15 @@
   'base/reset',
   'base/variables';
 
-  /*
-    import fonts and typography
-  */
+/*
+  import fonts and typography
+*/
 @import
   'base/fonts',
   'base/typography';
+
+/*
+  common spacings
+*/
+@import
+  'base/page';

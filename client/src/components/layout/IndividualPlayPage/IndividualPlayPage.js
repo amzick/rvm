@@ -76,7 +76,7 @@ class IndividualPlayPage extends Component {
     
     return loading || !play
       ? <div>Loading Individual Play Page</div>
-      : (<div className='individual-play-page'>
+      : (<div className='page-content individual-play-page'>
         <h2>{title}</h2>
         <span className='individual-play-page__playwright'>By {playwright}</span>
         <div className='individual-play-page__about' dangerouslySetInnerHTML={{__html: about}}></div>

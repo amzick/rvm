@@ -1,8 +1,6 @@
 @import "../../../stylesheets/base/variables.scss";
-// TODO remove borders
 
 .playcard {
-  border: solid 1px purple;
   box-sizing: border-box;
   float: left;
   margin: 0;
@@ -11,21 +9,15 @@
   padding-bottom: 0;
   width: 100%;
 
-  @include tablet-only {
-    border: solid 1px blue;
-  }
-
   @include tablet-and-larger {
     width: 33.333%;
   }
 
   @include desktop-only {
-    border: solid 1px green;
   }
 }
 
 .playcard__image-wrapper {
-  border: dotted 1px orange;
   display: block;
   height: 0;
   margin: auto;
@@ -36,7 +28,6 @@
   width: 100%;
 
   @include tablet-and-larger {
-    background-color: rgb(255, 13, 114);
     padding-bottom: 66.6667%;
   }
 
@@ -45,7 +36,6 @@
       keep image sizes consistent 
       https://www.sitepoint.com/maintain-image-aspect-ratios-responsive-web-design/
     */
-    border: dashed 1px red;
     display: block;
     min-height: 100%;
     min-width: 100%;
@@ -65,7 +55,6 @@
 }
 
 .playcard__title {
-  border: solid 1px black;
   // for long play titles
   min-height: 55px;
   // just to center the text vertically... silly

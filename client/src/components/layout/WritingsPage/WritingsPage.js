@@ -33,7 +33,7 @@ class WritingsPage extends Component {
 
     const renderLinks = (array) => {
       return (
-        <ul>
+        <ul className='writings-page__list'>
           {array.map(({ section, text, url }, idx) => {
             return (
               <li key={`writing-link-${section}-${idx}`}>
@@ -57,13 +57,19 @@ class WritingsPage extends Component {
     return loading || !writingLinks
       ? <div>Loading ...</div>
       : (
-        <div>
+        <div className='page-content writings-page'>
           <h2>Writing</h2>
-          <p>Preamble</p>
-          <h3>Reviews</h3>
-          {renderLinks(reviewLinks)}
-          <h3>Dramaturgy</h3>
-          {renderLinks(dramaturgyLinks)}
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at dapibus augue, sed tempus leo. Sed vulputate mi eu turpis bibendum, at interdum diam rhoncus. Aliquam consequat nisi pellentesque nibh porttitor lobortis. Cras lobortis nisi id libero dictum condimentum. Duis vulputate ornare lacus sit amet molestie. Aenean eu justo elit. Duis urna lacus, mattis at risus non, convallis tincidunt orci. Vivamus neque lorem, tristique nec sapien nec, tincidunt aliquam mi.</p>
+          <div className='writings-page__container'>
+            <div>
+              <h3>Reviews</h3>
+              {renderLinks(reviewLinks)}
+            </div>
+            <div>
+              <h3>Dramaturgy</h3>
+              {renderLinks(dramaturgyLinks)}
+            </div>
+          </div>
         </div>
       )
   }

@@ -1,16 +1,11 @@
 a. RVM feed back / MVPs
-- rems todos
-- play name bug (Test)
-- play page preface
+- style play page / cv page / writing page
 - body font choice
 - color theme
-- style play page / cv page / writing page
-- flavicon
 - loading component
 - edit page helper
-- update web app manifest ??? 
-https://developer.mozilla.org/en-US/docs/Web/Manifest
-https://developers.google.com/web/fundamentals/web-app-manifest/
+- play name bug (Test)
+
 
 0. Chores / things to learn any time
 - [Loading Spinner Flickering](https://blog.bitsrc.io/a-brief-history-of-flickering-spinners-c9eecd6053)
@@ -75,9 +70,11 @@ https://fontsinuse.com/in/2/formats/3/web
 ### Images
 [Consistent Sizing](https://www.sitepoint.com/maintain-image-aspect-ratios-responsive-web-design/)
 
-### Favicon Generation
+### Favicon Generation and Web Manifest Info
 https://favicon.io/favicon-generator/
 https://www.favicon-generator.org/
+https://developer.mozilla.org/en-US/docs/Web/Manifest
+https://developers.google.com/web/fundamentals/web-app-manifest/
 
 ?. SEO
 [Header Tags](https://www.hobo-web.co.uk/headers/)

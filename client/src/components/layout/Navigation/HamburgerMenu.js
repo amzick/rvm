@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NavLinks from './NavLinks';
+import classnames from 'classnames';
 
 import './styles.scss'
 
@@ -27,10 +28,14 @@ class HamburgerMenu extends Component {
       <nav className='navigation-menu navigation-menu--hamburger'>
         <button
           aria-expanded={expanded}
-          className='navigation-menu--hamburger__button'
+          className={
+            classnames(
+              'navigation-menu--hamburger__button',
+              { 'navigation-menu--hamburger__button--expanded': expanded }
+            )}
           onClick={this.toggleMenu}
         >
-          Menu
+          {expanded ? 'Close' : 'Menu'}
         </button>
         {expanded && <NavLinks />}
       </nav>

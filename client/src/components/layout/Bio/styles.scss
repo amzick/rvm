@@ -1,0 +1,7 @@
+@import '../../../stylesheets/base/variables.scss';
+
+.bio-page__headshot {
+  @include desktop-only {
+    max-width: 800px;
+  }
+}

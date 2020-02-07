@@ -10,8 +10,14 @@ class CVPage extends Component {
   render() {
 
     return (
-      <div>
-        <iframe src="https://drive.google.com/file/d/15S3UP3uT-RZDsoYwfXLHUKbVIspUjopt/preview" width="640" height="480"></iframe>
+      <div className='page-content cv-page'>
+        <iframe
+          className='cv-page__pdf'
+          height="480"
+          src="https://drive.google.com/file/d/15S3UP3uT-RZDsoYwfXLHUKbVIspUjopt/preview"
+          title="Rem's CV"
+          width="640"
+        />
       </div>
     )
   }
