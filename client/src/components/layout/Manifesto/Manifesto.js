@@ -31,7 +31,13 @@ class Manifesto extends Component {
     const { loading, manifesto } = this.state;
     return (loading || !manifesto)
       ? <div>Loading Manifesto</div>
-      : <div className='manifesto' dangerouslySetInnerHTML={{ __html: manifesto }} />
+      : (
+        <div>
+          <img src='/rvm-splash.jpg' />
+          <h2>Manifesto</h2>
+          <div className='manifesto' dangerouslySetInnerHTML={{ __html: manifesto }} />
+        </div>
+      )
   }
 }
 

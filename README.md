@@ -8,6 +8,9 @@ a. RVM feed back / MVPs
 - flavicon
 - loading component
 - edit page helper
+- update web app manifest ??? 
+https://developer.mozilla.org/en-US/docs/Web/Manifest
+https://developers.google.com/web/fundamentals/web-app-manifest/
 
 0. Chores / things to learn any time
 - [Loading Spinner Flickering](https://blog.bitsrc.io/a-brief-history-of-flickering-spinners-c9eecd6053)
@@ -71,6 +74,10 @@ https://fontsinuse.com/in/2/formats/3/web
 
 ### Images
 [Consistent Sizing](https://www.sitepoint.com/maintain-image-aspect-ratios-responsive-web-design/)
+
+### Favicon Generation
+https://favicon.io/favicon-generator/
+https://www.favicon-generator.org/
 
 ?. SEO
 [Header Tags](https://www.hobo-web.co.uk/headers/)

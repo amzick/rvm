@@ -31,7 +31,13 @@ class Bio extends Component {
     const { bio, loading } = this.state;
     return (loading || !bio)
       ? <div>Loading bio</div>
-      : <div className='bio' dangerouslySetInnerHTML={{ __html: bio }} />
+      : (
+        <div>
+          <img src='/rvm-headshot.jpg' />
+          <h2>About</h2>
+          <div className='bio' dangerouslySetInnerHTML={{ __html: bio }} />
+        </div>
+      )
   }
 }
 

@@ -45,6 +45,7 @@ class PlaysPage extends Component {
     return loading
       ? <div>Loading ...</div>
       : (<div className='plays-page-canvas'>
+        <p>Below you can find photos, videos, and reviews from several of Rem Myers’ directed plays. For a complete list of plays, please view his CV.</p>
         {plays.map(play => <PlayCard key={`playcard-${play._id}`} play={play} />)}
       </div>)
   }
