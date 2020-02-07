@@ -1,13 +1,14 @@
 a. RVM feed back / MVPs
 - cv page (replace youth header)
+- rems todos
 - play name bug (Test)
 - play page preface
 - body font choice
-- nav / hamburger
 - color theme
-- style play page
+- style play page / cv page / writing page
 - flavicon
 - loading component
+- edit page helper
 
 0. Chores / things to learn any time
 - [Loading Spinner Flickering](https://blog.bitsrc.io/a-brief-history-of-flickering-spinners-c9eecd6053)
@@ -118,3 +119,6 @@ https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.h
 ## Lingering Questions
 - module.exports vs export / require vs import
 - React Router / HashRouter combo (routing is bad)
+
+## Node path
+/usr/local/n/versions/node/(v)

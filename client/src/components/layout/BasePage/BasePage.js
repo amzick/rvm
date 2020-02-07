@@ -3,6 +3,7 @@ import { HashRouter, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import Bio from '../Bio';
+import CVPage from '../CVPage';
 import { HamburgerMenu } from '../Navigation';
 import IndividualPlayPage from '../IndividualPlayPage';
 import Manifesto from '../Manifesto';
@@ -106,8 +107,11 @@ class BasePage extends Component {
             {/* <PlaysPage plays={this.state.writing} /> */}
             <WritingsPage />
           </Route>
-          <Route path='/youth'>
+          {/* <Route path='/youth'>
             <PlaysPage plays={this.state.youth} />
+          </Route> */}
+          <Route path='/cv'>
+            <CVPage />
           </Route>
           <Route path='/plays/:title'>
             {this.state.loadingPlays

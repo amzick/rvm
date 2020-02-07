@@ -30,9 +30,10 @@ function App() {
         <AuthRoute exact path="/login" component={Login} />
         <ProtectedRoute exact path="/edit" component={EditPage} />
         <Route exact path ='/about'><Redirect to='/#/about' /></Route>
+        <Route exact path ='/about'><Redirect to='/#/cv' /></Route>
         <Route exact path ='/plays'><Redirect to='/#/plays' /></Route>
         <Route exact path ='/writing'><Redirect to='/#/writing' /></Route>
-        <Route exact path ='/youth'><Redirect to='/#/youth' /></Route>
+        {/* <Route exact path ='/youth'><Redirect to='/#/youth' /></Route> */}
       </div>
     </Router>
   );

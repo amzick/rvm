@@ -7,7 +7,8 @@ const NAVIGATION_ITEMS = [
   'about',
   'plays',
   'writing',
-  'youth'
+  // 'youth',
+  'cv'
 ]
 
 const generateNavLink = (href) => {
@@ -18,7 +19,7 @@ const generateNavLink = (href) => {
         key={`navigation-${href}`}
         to={`/${href}`}
       >
-        {href}
+        {href === 'cv' ? 'CV' : href}
       </NavLink>
     </li>
   )
