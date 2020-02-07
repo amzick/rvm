@@ -1,5 +1,4 @@
 a. RVM feed back / MVPs
-- cv page (replace youth header)
 - rems todos
 - play name bug (Test)
 - play page preface
@@ -120,5 +119,5 @@ https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.h
 - module.exports vs export / require vs import
 - React Router / HashRouter combo (routing is bad)
 
-## Node path
-/usr/local/n/versions/node/(v)
+## Increasing JS Heap Size
+https://github.com/facebook/create-react-app/issues/4536

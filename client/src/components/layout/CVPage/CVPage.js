@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Document } from 'react-pdf';
 
 import './styles.scss';
 
@@ -12,10 +11,7 @@ class CVPage extends Component {
 
     return (
       <div>
-        cv
-        {/* <Document
-          file='https://drive.google.com/file/d/15S3UP3uT-RZDsoYwfXLHUKbVIspUjopt/view?usp=sharing'
-        /> */}
+        <iframe src="https://drive.google.com/file/d/15S3UP3uT-RZDsoYwfXLHUKbVIspUjopt/preview" width="640" height="480"></iframe>
       </div>
     )
   }
