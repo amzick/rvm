@@ -13,14 +13,14 @@ http://jsfiddle.net/enigmarm/BpTdL/
   > blockquote {
     font-style: italic;
     margin-bottom: 10px;
+    text-align: justify;
     position: relative;
     quotes: "“" "”";
 
     &:before,
     &:after {
       display: block;
-      // todo choose colors
-      color: gray;
+      color: $accent-color;
       font-family: $display-header-font-family;
       font-size: 80px;
       position: absolute;
@@ -28,14 +28,14 @@ http://jsfiddle.net/enigmarm/BpTdL/
 
     &:before {
       content: open-quote;
-      left: -30px;
-      top: -30px;
+      left: -40px;
+      top: -40px;
     }
 
     &:after {
       content: close-quote;
-      right: 0px;
-      bottom: -70px;
+      right: -10px;
+      bottom: -80px;
     }
   }
 }

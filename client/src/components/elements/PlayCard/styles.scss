@@ -11,6 +11,11 @@
   text-decoration: none;
   width: 100%;
 
+  &:hover {
+    opacity: 0.75;
+    transition: opacity 0.3s;
+  }
+
   @include tablet-and-larger {
     width: 33.333%;
   }
@@ -62,9 +67,7 @@
   // just to center the text vertically... silly
   display: flex;
   flex-direction: column;
-  // font-family: $header-font-family;
   letter-spacing: 3.5px;
-  // color: gray;
   font-family: $sub-header-font-family;
   justify-content: center;
   align-items: center;

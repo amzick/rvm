@@ -1,18 +1,14 @@
 @import "../../../stylesheets/base/variables.scss";
 
 .site-footer {
-  // todo colors
-  min-height: $footer-height;
-  background: darkseagreen;
+  align-items: center;
+  border-top: 1px solid $border-color;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
-  border-top: 2px dotted blue;
-  // was exploring a partial rule
-  // justify-content: space-between;
-  // width: 90vw;
-  // margin: 0 auto;
+  margin: 40px auto 0;
+  min-height: $footer-height;
+  width: 80vw;
 
   @include tablet-and-larger {
     flex-direction: row;

@@ -22,11 +22,9 @@
   font-family: $sub-header-font-family;
   font-size: 22px;
   letter-spacing: 3.5px;
-  // todo : choose color
-  color: grey;
+  color: $subheader-color;
 
   @include tablet-and-larger {
     margin: 0 auto 25px;
-    // margin-bottom: 25px;
   }
 }

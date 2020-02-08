@@ -1,13 +1,10 @@
 @import "../../../stylesheets/base/variables.scss";
 
 .navigation-menu {
-  padding: 0 10px;
   font-family: $header-font-family;
   font-size: 20px;
-  // todo choose color pallette
-  // color: seagreen;
-  // background: pink;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
 .navigation-menu--desktop {
@@ -24,21 +21,16 @@
 }
 
 .navigation-menu--hamburger {
+  border-bottom: 1px solid $border-color;
   margin: 30px 0 20px;
   padding-bottom: 20px;
-  // todo pick colors
-  border-bottom: 1px dotted lightslategray;
   text-align: center;
   width: 100vw;
 
   button {
     @include remove-button-styling;
+    color: $hamburger-button-color;
     width: 100%;
-
-    &:focus {
-      // todo remove / style, edge case since mobile
-      // background-color: red;
-    }
 
     &.navigation-menu--hamburger__button--expanded {
       margin-bottom: 20px;
@@ -64,13 +56,16 @@
 
   a {
     text-decoration: none;
+    border-bottom: none;
   }
 }
 
 a.navigation-menu-list-item--active {
   &:link,
   &:visited {
-    // todo colors
-    color: red;
+    color: $violet;
+  }
+  &:hover {
+    color: $link-color-hover;
   }
 }

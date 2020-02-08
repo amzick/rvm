@@ -1,22 +1,39 @@
 body {
   color: $base-text-color;
   font-family: $base-text-font-family;
+
+  * {
+    &::selection {
+      background: $base-text-color-selection;
+    }
+  }
 }
 
 a:not([class]) {
-  &:link, &:visited {
-    // TODO choose colors... 
+  &:link,
+  &:visited {
+    color: $link-color;
+  }
+
+  &:active {
+    background-color: $link-color-active;
+  }
+
+  &:hover {
+    color: $link-color-hover;
   }
 }
 
 h1 {
   color: $base-text-color;
   font-family: $display-header-font-family;
-  // TODO: choose all font sizes
-  font-size: 4.5rem; 
+  font-size: 4.5rem;
 }
 
-h2, h3, h4, h5 {
+h2,
+h3,
+h4,
+h5 {
   font-family: $header-font-family;
   // font-family: $header-font-family-2;
   font-weight: normal;

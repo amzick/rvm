@@ -4,8 +4,7 @@
 .image-gallery-icon {
   @include tablet-and-larger {
     &:hover {
-      // todo choose colors
-      color: red;
+      color: $link-color-hover;
     }
   }
 }

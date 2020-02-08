@@ -1,6 +1,4 @@
 a. RVM feed back / MVPs
-- body font choice
-- color theme
 - loading component
 - edit page helper
 - play name bug (Test)
