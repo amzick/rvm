@@ -3,13 +3,11 @@
 .navigation-menu {
   padding: 0 10px;
   font-family: $header-font-family;
+  font-size: 20px;
   // todo choose color pallette
   // color: seagreen;
-  text-decoration: none;
   // background: pink;
   margin: 0 auto;
-  // todo remove
-  // border: solid 1px black;
 }
 
 .navigation-menu--desktop {
@@ -61,7 +59,12 @@
 }
 
 .navigation-menu-list-item {
+  font-size: 20px;
   text-transform: capitalize;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 a.navigation-menu-list-item--active {

@@ -1,5 +1,4 @@
 a. RVM feed back / MVPs
-- style play page
 - body font choice
 - color theme
 - loading component

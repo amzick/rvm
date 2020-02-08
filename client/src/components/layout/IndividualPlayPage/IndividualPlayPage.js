@@ -83,7 +83,7 @@ class IndividualPlayPage extends Component {
           <div className='individual-play-page__location'>{location}</div>
           {<Carousel images={images} title={title} />}
           <div className='individual-play-page__about' dangerouslySetInnerHTML={{ __html: about }}></div>
-          {((press && press.length) || (videos && videos.length)) && <h3>Media</h3>}
+          {((press && press.length) || (videos && videos.length)) ? <h3>Media</h3> : null}
           {(press && press.length) ? <><h4>Press</h4><ul className='individual-play-page__press-list'>{pressItems}</ul></> : null}
           {(videos && videos.length) ? <><h4>Video</h4><ul className='individual-play-page__videos-list'>{videoItems}</ul></> : null}
         </div>)

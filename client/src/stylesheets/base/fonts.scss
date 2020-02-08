@@ -27,13 +27,32 @@
 
 // Maitree: https://fonts.google.com/specimen/Maitree?selection.family=Maitree
 // Base Text (serif)
+// @font-face {
+//   font-family: 'Maitree';
+//   src: local('Maitree'), url('../../assets/fonts/Maitree-Regular.ttf') format('truetype');
+// }
+
+// @font-face {
+//   font-family: 'Maitree';
+//   src: local('Maitree'), url('../../assets/fonts/Maitree-Bold.ttf') format('truetype');
+//   font-weight: bold;
+// }
+
+// Arvo: https://fonts.google.com/specimen/Arvo?selection.family=Arvo
+// Base Text (serif)
 @font-face {
-  font-family: 'Maitree';
-  src: local('Maitree'), url('../../assets/fonts/Maitree-Regular.ttf') format('truetype');
+  font-family: 'Arvo';
+  src: local('Arvo'), url('../../assets/fonts/Arvo-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Maitree';
-  src: local('Maitree'), url('../../assets/fonts/Maitree-Bold.ttf') format('truetype');
+  font-family: 'Arvo';
+  src: local('Arvo'), url('../../assets/fonts/Arvo-Bold.ttf') format('truetype');
   font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Arvo';
+  src: local('Arvo'), url('../../assets/fonts/Arvo-Italic.ttf') format('truetype');
+  font-style: italic;
 }
