@@ -480,7 +480,7 @@ class EditForm extends Component {
         {_id !== 'new' && !shouldShowDeleteWarning && <button onClick={this.toggleDeleteWarning}>Delete Play</button>}
         {shouldShowDeleteWarning &&
           <div>
-            Are you sure? You can hide plays from displaying and preserve the data by unchecking all types.
+            {`Are you sure you want to delete ${title}? You can hide plays from displaying and preserve the data by unchecking all types.`}
             <button onClick={this.onDelete}>Yes delete permanently.</button>
             <button onClick={this.toggleDeleteWarning}>Nevermind.</button>
           </div>

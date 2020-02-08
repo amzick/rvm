@@ -1,0 +1,51 @@
+@import "../../../stylesheets/base/variables.scss";
+
+.individual-play-page__about {
+  margin: 20px 0 ;
+}
+
+.individual-play-page__carousel {
+  background: black;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 80vw;
+
+  .image-gallery-slides {
+    > div {
+      > div {
+        // actual direct image wrapper ... ?
+        box-sizing: border-box;
+        display: block;
+        height: 0;
+        margin: auto;
+        max-width: 1200px;
+        overflow: hidden;
+        padding-bottom: 75%;
+        position: relative;
+        width: 100%;
+      }
+    }
+
+    img {
+      display: block;
+      // min-height: 100%;
+      // min-width: 100%;
+      position: absolute;
+      max-width: 100%;
+      max-height: 100% !important; // have to override some css from the component so images are cropped
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+}
+
+.individual-play-page__location {
+  margin-bottom: 20px;
+}
+
+.individual-play-page__playwright {
+  // margin-bottom: 10px;
+}

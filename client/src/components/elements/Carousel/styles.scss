@@ -1,1 +1,11 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
+@import "../../../stylesheets/base/variables.scss";
+
+.image-gallery-icon {
+  @include tablet-and-larger {
+    &:hover {
+      // todo choose colors
+      color: red;
+    }
+  }
+}

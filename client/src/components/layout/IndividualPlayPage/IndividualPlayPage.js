@@ -31,7 +31,7 @@ class IndividualPlayPage extends Component {
     // sucks to fetch every time 
     this.fetchPlay();
   }
-  
+
   componentDidUpdate(prevProps) {
     const prevTitle = get(prevProps, 'match.params.title');
     const currentTitle = get(this.props, 'match.params.title');
@@ -60,32 +60,33 @@ class IndividualPlayPage extends Component {
     const { loading, play } = this.state;
 
     let about, images, location, press, playwright, title, videos;
-    
+
     play && ({
-        about,
-        images,
-        location,
-        press,
-        playwright,
-        title,
-        videos
-      } = play);
+      about,
+      images,
+      location,
+      press,
+      playwright,
+      title,
+      videos
+    } = play);
 
     const pressItems = press && press.map(press => <PressItem key={`press-item-${press._id}`} press={press} />);
     const videoItems = videos && videos.map(video => <VideoPlayer key={video} video={video} />);
-    
+
     return loading || !play
       ? <div>Loading Individual Play Page</div>
-      : (<div className='page-content individual-play-page'>
-        <h2>{title}</h2>
-        <span className='individual-play-page__playwright'>By {playwright}</span>
-        <div className='individual-play-page__about' dangerouslySetInnerHTML={{__html: about}}></div>
-        <span className='individual-play-page__location'>{location}</span>
-        {<Carousel images={images} title={title} />}
-        {((press && press.length) || (videos && videos.length)) && <h3>Media</h3>}
-        {press && press.length && pressItems}
-        {videos && videos.length && videoItems}
-      </div>)
+      : (
+        <div className='page-content individual-play-page'>
+          <h2>{title}</h2>
+          <div className='individual-play-page__playwright'>By {playwright}</div>
+          <div className='individual-play-page__location'>{location}</div>
+          {<Carousel images={images} title={title} />}
+          <div className='individual-play-page__about' dangerouslySetInnerHTML={{ __html: about }}></div>
+          {((press && press.length) || (videos && videos.length)) && <h3>Media</h3>}
+          {(press && press.length) ? pressItems : null}
+          {(videos && videos.length) ? videoItems : null}
+        </div>)
   }
 }
 

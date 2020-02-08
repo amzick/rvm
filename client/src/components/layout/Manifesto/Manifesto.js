@@ -34,8 +34,8 @@ class Manifesto extends Component {
       : (
         <div className='page-content'>
           <img height='800' width='1200' src='/rvm-splash.jpg' />
-          <h2>Manifesto</h2>
-          <div className='manifesto' dangerouslySetInnerHTML={{ __html: manifesto }} />
+          {/* <h2>Manifesto</h2>
+          <div className='manifesto' dangerouslySetInnerHTML={{ __html: manifesto }} /> */}
         </div>
       )
   }

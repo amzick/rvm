@@ -1,5 +1,5 @@
 a. RVM feed back / MVPs
-- style play page / cv page / writing page
+- style play page
 - body font choice
 - color theme
 - loading component
@@ -11,6 +11,7 @@ a. RVM feed back / MVPs
 - [Loading Spinner Flickering](https://blog.bitsrc.io/a-brief-history-of-flickering-spinners-c9eecd6053)
 - refactor ugly code
 - [FOUT](https://css-tricks.com/fout-foit-foft/)
+- robots.txt / hiding edit page
 - SEO
 - Security
 - Prettier / eslint
