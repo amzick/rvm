@@ -42,10 +42,21 @@
   }
 }
 
+.individual-play-page__content {
+  
+}
+
 .individual-play-page__location {
   margin-bottom: 20px;
 }
 
 .individual-play-page__playwright {
   // margin-bottom: 10px;
+}
+
+.individual-play-page__press-list li {
+  @include tablet-and-larger {
+    margin: 20px 0;
+    padding: 0 40px;
+  }
 }

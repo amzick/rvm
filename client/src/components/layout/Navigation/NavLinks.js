@@ -13,10 +13,9 @@ const NAVIGATION_ITEMS = [
 
 const generateNavLink = (href) => {
   return (
-    <li className='navigation-menu-list-item'>
+    <li className='navigation-menu-list-item' key={`navigation-${href}`}>
       <NavLink
         activeClassName='navigation-menu-list-item--active'
-        key={`navigation-${href}`}
         to={`/${href}`}
       >
         {href === 'cv' ? 'CV' : href}

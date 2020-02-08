@@ -71,21 +71,21 @@ class IndividualPlayPage extends Component {
       videos
     } = play);
 
-    const pressItems = press && press.map(press => <PressItem key={`press-item-${press._id}`} press={press} />);
-    const videoItems = videos && videos.map(video => <VideoPlayer key={video} video={video} />);
+    const pressItems = press && press.map(press => <li key={`press-item-${press._id}`}><PressItem press={press} /></li>);
+    const videoItems = videos && videos.map(video => <li key={video}><VideoPlayer video={video} /></li>);
 
     return loading || !play
       ? <div>Loading Individual Play Page</div>
       : (
-        <div className='page-content individual-play-page'>
+        <div className='page-content individual-play-page__content'>
           <h2>{title}</h2>
           <div className='individual-play-page__playwright'>By {playwright}</div>
           <div className='individual-play-page__location'>{location}</div>
           {<Carousel images={images} title={title} />}
           <div className='individual-play-page__about' dangerouslySetInnerHTML={{ __html: about }}></div>
           {((press && press.length) || (videos && videos.length)) && <h3>Media</h3>}
-          {(press && press.length) ? pressItems : null}
-          {(videos && videos.length) ? videoItems : null}
+          {(press && press.length) ? <><h4>Press</h4><ul className='individual-play-page__press-list'>{pressItems}</ul></> : null}
+          {(videos && videos.length) ? <><h4>Video</h4><ul className='individual-play-page__videos-list'>{videoItems}</ul></> : null}
         </div>)
   }
 }

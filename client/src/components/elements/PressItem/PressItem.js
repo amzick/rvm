@@ -15,10 +15,11 @@ const PressItem = ({ press }) => {
   }
 
   const quoteToRender = (
-    <blockquote
-      cite={url ? url : ''}
-    >
-      &#8220;{quote}&#8221;
+    <blockquote cite={publication}>
+      {/* doing quotes with css now */}
+      {/* <span>&#8220;</span> */}
+      {quote}
+      {/* <span>&#8221;</span> */}
     </blockquote>)
 
   const publicationToRender = url
@@ -26,9 +27,9 @@ const PressItem = ({ press }) => {
     : publication;
 
   return (
-    <aside>
+    <aside className='press-item'>
       {quote && quoteToRender}
-      {publicationToRender}
+      -- {publicationToRender}
     </aside>
   );
 }

@@ -1,0 +1,41 @@
+@import "../../../stylesheets/base/variables.scss";
+
+/*
+styling quotes:
+https://tympanus.net/codrops/css_reference/quotes/
+https://stackoverflow.com/questions/16325687/make-big-quotes-with-blockquote
+http://jsfiddle.net/enigmarm/BpTdL/
+*/
+
+.press-item {
+  margin-bottom: 20px;
+
+  > blockquote {
+    font-style: italic;
+    margin-bottom: 10px;
+    position: relative;
+    quotes: "“" "”";
+
+    &:before,
+    &:after {
+      display: block;
+      // todo choose colors
+      color: gray;
+      font-family: $display-header-font-family;
+      font-size: 80px;
+      position: absolute;
+    }
+
+    &:before {
+      content: open-quote;
+      left: -30px;
+      top: -30px;
+    }
+
+    &:after {
+      content: close-quote;
+      right: 0px;
+      bottom: -70px;
+    }
+  }
+}
