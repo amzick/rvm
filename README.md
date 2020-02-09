@@ -1,5 +1,4 @@
 a. RVM feed back / MVPs
-- edit page helper
 - play name bug (Test)
 
 
@@ -15,6 +14,7 @@ a. RVM feed back / MVPs
 - Jsdoc
 - Tests
 - Anything Labeled TODO
+- 404 page
 - Work through end of readme links
 - write up on experience
 - kubernetes ?

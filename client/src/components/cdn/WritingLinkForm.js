@@ -49,7 +49,7 @@ class WritingLinkForm extends Component {
       <ul>Dramaturg Links:
         {arr.map((ele, idx) => {
         return (
-          <li key={`dramaturg-link-${idx}`}>Dramaturg Link {idx + 1}
+          <li key={`dramaturg-link-${idx}`}>Dramaturg Link {idx + 1}<br />
             <label htmlFor={`dramaturg-link-text-${idx}`}>Display Text:</label>
             <input
               id={`dramaturg-link-text-${idx}`}
@@ -63,7 +63,7 @@ class WritingLinkForm extends Component {
               type="text"
               value={ele.url}
               onChange={event => this.handleArrayUpdate(event, 'update', 'url', idx)}
-            />
+            /><br />
             <label htmlFor={`dramaturg-link-section-${idx}`}>Review or Dramaturgy? (selecting neither will hide):</label>
             <select id={`dramaturg-link-section-${idx}`} value={ele.section} onChange={event => this.handleArrayUpdate(event, 'update', 'section', idx)}>
               <option value=''>none</option>

@@ -1,0 +1,30 @@
+.clippy {
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+  width: 130px;
+  height: auto;
+  background-color: rgba(192, 192, 192, 0.3);
+
+  img {
+    opacity: 0.4;
+  }
+}
+
+.help {
+  font-family: "Courier", "monospace", "serif";
+  color: white;
+  padding: 0 10px;
+  position: fixed;
+  width: 400px;
+  height: 70vh;
+  top: 5%;
+  right: 2%;
+  background-color: rgba(104, 214, 40, 0.9);
+  border: 4px dashed green;
+
+}
+
+.hidden {
+  display: none;
+}
