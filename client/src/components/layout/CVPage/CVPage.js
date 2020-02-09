@@ -8,7 +8,6 @@ class CVPage extends Component {
   }
 
   render() {
-
     return (
       <div className='page-content cv-page'>
         <iframe

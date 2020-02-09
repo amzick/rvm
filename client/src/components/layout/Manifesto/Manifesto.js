@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Loading from '../../elements/Loading';
+import waitAtLeast from '../../helpers/waitAtLeast';
+
 import './styles.scss';
 
 class Manifesto extends Component {
@@ -16,7 +19,7 @@ class Manifesto extends Component {
 
   componentDidMount() {
     if (this.state.loading || !this.state.manifesto) {
-      axios.get('/api/infos/rem')
+      waitAtLeast(axios.get('/api/infos/rem'))
         .then(({ data }) => {
           const { info: { manifesto } } = data;
           this.setState({
@@ -30,7 +33,7 @@ class Manifesto extends Component {
   render() {
     const { loading, manifesto } = this.state;
     return (loading || !manifesto)
-      ? <div>Loading Manifesto</div>
+      ? <Loading />
       : (
         <div className='page-content'>
           <img height='800' width='1200' src='/rvm-splash.jpg' />

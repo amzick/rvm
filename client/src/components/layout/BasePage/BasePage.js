@@ -12,8 +12,10 @@ import PlaysPage from '../PlaysPage';
 import WritingsPage from '../WritingsPage';
 import SiteFooter from '../../elements/SiteFooter';
 import SiteHeader from '../../elements/SiteHeader';
+import Loading from '../../elements/Loading';
 
 import filterPlays from '../../helpers/filterPlays';
+import waitAtLeast from '../../helpers/waitAtLeast';
 
 import './styles.scss';
 
@@ -49,7 +51,7 @@ class BasePage extends Component {
 
   componentDidMount() {
     if (this.state.loadingPlays) {
-      axios.get('/api/plays')
+      waitAtLeast(axios.get('/api/plays'))
         .then(({ data }) => {
           const { plays: allPlays } = data;
 
@@ -97,25 +99,25 @@ class BasePage extends Component {
           <Route exact path='/'>
             <Manifesto manifesto={manifesto} />
           </Route>
-          <Route path='/about'>
+          <Route exact path='/about'>
             <Bio bio={bio} />
           </Route>
           <Route exact path='/plays'>
             <PlaysPage plays={this.state.plays} />
           </Route>
-          <Route path='/writing'>
+          <Route exact path='/writing'>
             {/* <PlaysPage plays={this.state.writing} /> */}
             <WritingsPage />
           </Route>
-          {/* <Route path='/youth'>
+          {/* <Route exact path='/youth'>
             <PlaysPage plays={this.state.youth} />
           </Route> */}
-          <Route path='/cv'>
+          <Route exact path='/cv'>
             <CVPage />
           </Route>
           <Route path='/plays/:title'>
             {this.state.loadingPlays
-              ? <div>LoadingPlays ...</div>
+              ? <Loading />
               : <IndividualPlayPage play={this.state.individualPlay} />}
           </Route>
           <br />

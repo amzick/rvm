@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import ExternalLink from '../../helpers/ExternalLink';
+import Loading from '../../elements/Loading';
+import waitAtLeast from '../../helpers/waitAtLeast';
 
 import './styles.scss';
 
@@ -18,7 +20,7 @@ class WritingsPage extends Component {
 
   componentDidMount() {
 
-    axios.get('/api/writingLinks/')
+    waitAtLeast(axios.get('/api/writingLinks/'))
       .then(({ data }) => {
         const { writingLinks: { links } } = data;
         this.setState({
@@ -55,7 +57,7 @@ class WritingsPage extends Component {
 
 
     return loading || !writingLinks
-      ? <div>Loading ...</div>
+      ? <Loading />
       : (
         <div className='page-content writings-page'>
           <h2>Writing</h2>

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Loading from '../../elements/Loading';
+import waitAtLeast from '../../helpers/waitAtLeast';
+
 import './styles.scss';
 
 class Bio extends Component {
@@ -16,7 +19,7 @@ class Bio extends Component {
 
   componentDidMount() {
     if (this.state.loading || !this.state.bio) {
-      axios.get('/api/infos/rem')
+      waitAtLeast(axios.get('/api/infos/rem'))
         .then(({ data }) => {
           const { info: { bio } } = data;
           this.setState({
@@ -30,7 +33,7 @@ class Bio extends Component {
   render() {
     const { bio, loading } = this.state;
     return (loading || !bio)
-      ? <div>Loading bio</div>
+      ? <Loading />
       : (
         <div className='page-content bio-page'>
           <img className='bio-page__headshot' height='800' width='800' src='/rvm-headshot.jpg' />

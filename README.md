@@ -1,5 +1,4 @@
 a. RVM feed back / MVPs
-- loading component
 - edit page helper
 - play name bug (Test)
 
@@ -9,6 +8,7 @@ a. RVM feed back / MVPs
 - refactor ugly code
 - [FOUT](https://css-tricks.com/fout-foit-foft/)
 - robots.txt / hiding edit page
+- hamburger nav items close menu on click
 - SEO
 - Security
 - Prettier / eslint

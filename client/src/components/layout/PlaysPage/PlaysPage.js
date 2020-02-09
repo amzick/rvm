@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import PlayCard from '../../elements/PlayCard'
+import Loading from '../../elements/Loading';
+import waitAtLeast from '../../helpers/waitAtLeast';
 
 import { isEmpty } from 'lodash';
 import filterPlays from '../../helpers/filterPlays';
@@ -28,7 +30,7 @@ class PlaysPage extends Component {
         youth: 'isYouth'
       };
 
-      axios.get('/api/plays')
+      waitAtLeast(axios.get('/api/plays'))
         .then(({ data }) => {
           const { plays } = data;
           this.setState({
@@ -43,7 +45,7 @@ class PlaysPage extends Component {
     const { loading, plays } = this.state;
 
     return loading
-      ? <div>Loading ...</div>
+      ? <Loading />
       : (<div className='plays-page-canvas'>
         <p>Below you can find photos, videos, and reviews from several of Rem Myers’ directed plays. For a complete list of plays, please view his CV.</p>
         {plays.map(play => <PlayCard key={`playcard-${play._id}`} play={play} />)}
