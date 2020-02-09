@@ -7,6 +7,8 @@ import { get } from 'lodash';
 import Carousel from '../../elements/Carousel';
 import PressItem from '../../elements/PressItem';
 import VideoPlayer from '../../elements/VideoPlayer';
+import Loading from '../../elements/Loading';
+import waitAtLeast from '../../helpers/waitAtLeast';
 
 import './styles.scss';
 
@@ -43,7 +45,7 @@ class IndividualPlayPage extends Component {
   fetchPlay() {
     const title = get(this.props, 'match.params.title')
       || get(this.props, 'location.pathname').split('/')[2];
-    axios.get(`/api/plays/${title}`)
+    waitAtLeast(axios.get(`/api/plays/${title}`), 800)
       .then(({ data }) => {
         const { play } = data;
         this.setState({
@@ -75,7 +77,7 @@ class IndividualPlayPage extends Component {
     const videoItems = videos && videos.map(video => <li key={video}><VideoPlayer video={video} /></li>);
 
     return loading || !play
-      ? <div>Loading Individual Play Page</div>
+      ? <Loading />
       : (
         <div className='page-content individual-play-page__content'>
           <h2>{title}</h2>
