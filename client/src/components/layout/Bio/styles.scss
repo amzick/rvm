@@ -1,6 +1,12 @@
 @import '../../../stylesheets/base/variables.scss';
 
+.bio {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
 .bio-page__headshot {
+  
   @include desktop-only {
     max-width: 800px;
   }

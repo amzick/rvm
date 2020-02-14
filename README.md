@@ -123,3 +123,7 @@ https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.h
 
 ## Increasing JS Heap Size
 https://github.com/facebook/create-react-app/issues/4536
+
+## Hosting
+[Buying Domain with NameCheap](https://www.tentononline.com/how-to-register-a-domain-name-with-namecheap/)
+[Connecting NameCheap to Heroku](https://medium.com/@usama_asfar/how-to-set-up-a-domain-to-heroku-with-namecheap-54b5f13a1de5)

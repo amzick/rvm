@@ -36,9 +36,9 @@ class Bio extends Component {
       ? <Loading />
       : (
         <div className='page-content bio-page'>
-          <img className='bio-page__headshot' height='800' width='800' src='/rvm-headshot.jpg' />
           <h2>About Rem</h2>
           <div className='bio' dangerouslySetInnerHTML={{ __html: bio }} />
+          <img className='bio-page__headshot' height='800' width='800' src='/rvm-headshot.jpg' />
         </div>
       )
   }
