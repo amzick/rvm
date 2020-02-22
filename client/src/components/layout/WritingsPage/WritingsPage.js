@@ -61,7 +61,7 @@ class WritingsPage extends Component {
       : (
         <div className='page-content writings-page'>
           <h2>Writing</h2>
-          <p>I am a new play dramaturg, a research dramaturg, and a play critic. Below are select examples of my writing.</p>
+          <p>Rem Myers is a new play dramaturg, a research dramaturg, and a play critic. Below are select examples of his writing.</p>
           <div className='writings-page__container'>
             <div>
               <h3>Reviews</h3>
