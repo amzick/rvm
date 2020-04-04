@@ -5,6 +5,7 @@ import Loading from '../../elements/Loading';
 import waitAtLeast from '../../helpers/waitAtLeast';
 
 import './styles.scss';
+import { IMAGE_KIT_EXTERNAL_PATH } from '../../../utils/constants';
 
 class Manifesto extends Component {
   constructor(props) {
@@ -29,14 +30,13 @@ class Manifesto extends Component {
         })
     }
   }
-
   render() {
     const { loading, manifesto } = this.state;
     return (loading || !manifesto)
       ? <Loading />
       : (
         <div className='page-content'>
-          <img height='800' width='1200' src='/rvm-splash.jpg' />
+          <img height='800' width='1200' src={`${IMAGE_KIT_EXTERNAL_PATH}/rvm-splash_dhsLuHE9b.jpg`} />
           {/* <h2>Manifesto</h2>
           <div className='manifesto' dangerouslySetInnerHTML={{ __html: manifesto }} /> */}
         </div>

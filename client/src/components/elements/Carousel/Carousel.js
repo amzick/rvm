@@ -3,6 +3,7 @@ import ImageGallery from 'react-image-gallery';
 
 import isEmpty from 'lodash/isEmpty';
 import './styles.scss';
+import { IMAGE_KIT_EXTERNAL_PATH } from '../../../utils/constants';
 
 /*
 React Image Gallery
@@ -20,19 +21,12 @@ const MyCarousel = ({ images, title }) => {
     const altText = `Actors performing in ${title}`;
     return (
       {
-        original: url,
+        original: IMAGE_KIT_EXTERNAL_PATH + url,
         originalAlt: altText,
-        thumbnail: url,
+        thumbnail: IMAGE_KIT_EXTERNAL_PATH + url,
         thumbnailAlt: altText
       }
     )
-  });
-
-  // for lightbox
-  const lightboxImages = images.map(url => {
-    return {
-      src: url
-    }
   });
 
   return (

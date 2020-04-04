@@ -1,9 +1,10 @@
-a. RVM feed back / MVPs
-- play name bug (Test)
-
-
 0. Chores / things to learn any time
-- [Loading Spinner Flickering](https://blog.bitsrc.io/a-brief-history-of-flickering-spinners-c9eecd6053)
+- replace console.logs with console.errors. add console.info on loading the site (use css on console log)
+- lighthouse performance issues (image sizes, strip image meta tags, use cloudinary to make images efficient)
+- performance: artillery or zeit.time
+- same site cookies
+- error warnings
+- embed image / text (ie when i posted to slack)
 - refactor ugly code
 - [FOUT](https://css-tricks.com/fout-foit-foft/)
 - robots.txt / hiding edit page
@@ -17,6 +18,7 @@ a. RVM feed back / MVPs
 - 404 page
 - Work through end of readme links
 - write up on experience
+- add urls to CMS
 - kubernetes ?
 - convert to typescript ?
 
@@ -73,6 +75,12 @@ https://favicon.io/favicon-generator/
 https://www.favicon-generator.org/
 https://developer.mozilla.org/en-US/docs/Web/Manifest
 https://developers.google.com/web/fundamentals/web-app-manifest/
+
+### Loading Spinner Flickering
+https://blog.bitsrc.io/a-brief-history-of-flickering-spinners-c9eecd6053
+
+4. Performance
+Used Image Kit To Reduce Image Sizes - originally specified cloudinary but didn't look into it
 
 ?. SEO
 [Header Tags](https://www.hobo-web.co.uk/headers/)
