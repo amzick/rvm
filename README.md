@@ -1,10 +1,10 @@
 0. Chores / things to learn any time
+- site not defaulting to https
 - replace console.logs with console.errors. add console.info on loading the site (use css on console log)
 - lighthouse performance issues (image sizes, strip image meta tags, use cloudinary to make images efficient)
 - performance: artillery or zeit.time
 - same site cookies
 - error warnings
-- embed image / text (ie when i posted to slack)
 - refactor ugly code
 - [FOUT](https://css-tricks.com/fout-foit-foft/)
 - robots.txt / hiding edit page
@@ -82,8 +82,11 @@ https://blog.bitsrc.io/a-brief-history-of-flickering-spinners-c9eecd6053
 4. Performance
 Used Image Kit To Reduce Image Sizes - originally specified cloudinary but didn't look into it
 
-?. SEO
+5. SEO
 [Header Tags](https://www.hobo-web.co.uk/headers/)
+[Introduction To Meta Tags](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML)
+[Meta Tags Best Practices](https://www.sitepoint.com/meta-tags-html-basics-best-practices/)
+[Meta Tags For Social Media](https://css-tricks.com/essential-meta-tags-social-media/)
 
 ## Interesting Links:
 Node.js best practices
