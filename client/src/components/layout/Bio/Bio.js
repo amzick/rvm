@@ -38,7 +38,13 @@ class Bio extends Component {
         <div className='page-content bio-page'>
           <h2>About Rem</h2>
           <div className='bio' dangerouslySetInnerHTML={{ __html: bio }} />
-          <img className='bio-page__headshot' height='800' width='800' src='https://ik.imagekit.io/rvm/rvm-headshot_xnAY2SP92.jpg' />
+          <img
+            className='bio-page__headshot'
+            height='800'
+            width='800'
+            src='https://ik.imagekit.io/rvm/rvm-headshot_xnAY2SP92.jpg'
+            alt='Photograph of Rem at work.'
+          />
         </div>
       )
   }

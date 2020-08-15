@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import ImageGallery from 'react-image-gallery';
 
 import isEmpty from 'lodash/isEmpty';
@@ -10,8 +10,6 @@ React Image Gallery
 https://github.com/xiaolin/react-image-gallery
 */
 const MyCarousel = ({ images, title }) => {
-
-
   if (isEmpty(images) || isEmpty(title)) {
     return null;
   }

@@ -36,7 +36,12 @@ class Manifesto extends Component {
       ? <Loading />
       : (
         <div className='page-content'>
-          <img height='800' width='1200' src={`${IMAGE_KIT_EXTERNAL_PATH}/rvm-splash_dhsLuHE9b.jpg`} />
+          <img
+            height='800'
+            width='1200'
+            src={`${IMAGE_KIT_EXTERNAL_PATH}/rvm-splash_dhsLuHE9b.jpg`}
+            alt="Photograph of the stage from Rem's production of 'Men on Boats'."
+          />
           {/* <h2>Manifesto</h2>
           <div className='manifesto' dangerouslySetInnerHTML={{ __html: manifesto }} /> */}
         </div>
