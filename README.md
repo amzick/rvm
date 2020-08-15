@@ -1,5 +1,4 @@
 0. Chores / things to learn any time
-- site not defaulting to https
 - replace console.logs with console.errors. add console.info on loading the site (use css on console log)
 - lighthouse performance issues (image sizes, strip image meta tags, use cloudinary to make images efficient)
 - performance: artillery or zeit.time
@@ -87,6 +86,9 @@ Used Image Kit To Reduce Image Sizes - originally specified cloudinary but didn'
 [Introduction To Meta Tags](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML)
 [Meta Tags Best Practices](https://www.sitepoint.com/meta-tags-html-basics-best-practices/)
 [Meta Tags For Social Media](https://css-tricks.com/essential-meta-tags-social-media/)
+
+6. Security
+[Redirect to HTTPS](https://stackoverflow.com/questions/7450940/automatic-https-connection-redirect-with-node-js-express)
 
 ## Interesting Links:
 Node.js best practices
