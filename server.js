@@ -42,13 +42,13 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
 app.use(passport.initialize());
 
 // Redirect to HTTPS
-app.use((req, res, next) => {
-  if (!req.secure && process.env.NODE_ENV === 'production') {
-    res.redirect(`https://${req.headers.host}${req.url}`);
-  } else {
-    next();
-  }
-});
+// app.use((req, res, next) => {
+//   if (!req.secure && process.env.NODE_ENV === 'production') {
+//     res.redirect(`https://${req.headers.host}${req.url}`);
+//   } else {
+//     next();
+//   }
+// });
 
 // Passport config
 require('./config/passport')(passport);

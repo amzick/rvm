@@ -1,9 +1,9 @@
 0. Chores / things to learn any time
+- redirecting to https causes infinite loop
 - replace console.logs with console.errors. add console.info on loading the site (use css on console log)
 - lighthouse performance issues (image sizes, strip image meta tags, use cloudinary to make images efficient)
 - performance: artillery or zeit.time
 - same site cookies
-- error warnings
 - refactor ugly code
 - [FOUT](https://css-tricks.com/fout-foit-foft/)
 - robots.txt / hiding edit page
