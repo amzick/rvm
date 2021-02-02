@@ -8,7 +8,7 @@ export default function () {
       <iframe
         className='cv-page__pdf'
         height="480"
-        src="https://drive.google.com/file/d/15S3UP3uT-RZDsoYwfXLHUKbVIspUjopt/preview"
+        src="https://drive.google.com/file/d/1GZ3lwnu-TEZLt_GS60NE_hw30OqdkaFW/preview"
         title="Rem's CV"
         width="640"
       />
