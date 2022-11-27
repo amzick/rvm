@@ -2,6 +2,9 @@
   "name": "rvm",
   "version": "1.0.0",
   "description": "Personal website for Theater Director and Dramaturge Rem Van Aiken Myers",
+  "engines": {
+    "node": "16.13.2"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/amzick/rvm.git"
