@@ -1,3 +1,8 @@
+## Dev
+create .env file in server, add MONGO_URI and SECRET_OR_KEY vals from heroku
+npm i in server and client
+npm run dev
+
 0. Chores / things to learn any time
 - redirecting to https causes infinite loop
 - replace console.logs with console.errors. add console.info on loading the site (use css on console log)
